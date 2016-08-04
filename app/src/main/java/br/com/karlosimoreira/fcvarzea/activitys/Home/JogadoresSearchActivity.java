@@ -94,23 +94,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         if (rvUsers != null) {
             rvUsers.setHasFixedSize( true );
         }
-        /*rvUsers.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
 
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });*/
-       /* if (rvUsers != null) {
-            rvUsers.setLayoutManager( new LinearLayoutManager(this));
-            UserNoRecyclerAdapter adapter = new UserNoRecyclerAdapter(getnListUserFirebase(query), bitmapsList,this);
-            adapter.setRecyclerViewOnClickListenerHack(this);
-            rvUsers.setAdapter(adapter);
-        }*/
         if (rvUsers != null) {
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
             JogadorAdapter adapter = new JogadorAdapter(getnListUserFirebase(query),this);
