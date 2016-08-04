@@ -52,24 +52,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         listCity =new ArrayList<>();
         listState =new ArrayList<>();
 
-       /* DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
-        connectedRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                boolean connected = snapshot.getValue(Boolean.class);
-                if (connected) {
-                    Log.v("onDataChange","connected");
-                } else {
-
-                    Log.v("onDataChange","not connected");
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.v("onCancelled","Listener was cancelled");
-            }
-        });*/
         databaseReference = LibraryClass.getFirebase().child(User.NODE_DEFAULT);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -94,14 +76,11 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         };
         databaseReference.addValueEventListener(valueEventListener);
 
-        //clausuraPrimaria = "city";
         valueTipo = "0";
-
     }
     @Override
     protected void onResume() {
         super.onResume();
-
         init();
     }
     @Override
@@ -304,7 +283,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
             Collections.sort(listCity);
         }
 
-
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -315,7 +293,11 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onClick(View view) {
-                valuePrimario = spValues.getSelectedItem().toString();
+                if (StringUtils.isNullOrEmpty(valuePrimario)){
+                    valuePrimario = "None";
+                }else {
+                    valuePrimario = spValues.getSelectedItem().toString();
+                }
                 Log.v("onClick ", clausuraPrimaria + " & " +valuePrimario);
                 enviarDados(clausuraPrimaria, valuePrimario,valueTipo);
                 dialog.dismiss();

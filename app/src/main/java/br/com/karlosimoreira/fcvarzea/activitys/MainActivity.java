@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +38,7 @@ import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.UpdateActivity
 import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.UpdateLoginActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.UpdatePasswordActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
+import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
 import br.com.karlosimoreira.fcvarzea.domain.util.DownloadImageTask;
 import br.com.karlosimoreira.fcvarzea.domain.util.ImagemProcess;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
@@ -146,10 +148,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         txtInfo=(TextView)header.findViewById(R.id.txtInfo);
         photoHeader= (CircleImageView)header.findViewById(R.id.imgProfiler);
         imageViewMy = (ImageView)findViewById(R.id.imageViewMy);
+        Animation.setAnimation(imageViewMy,700, Techniques.Tada);
         imageViewMy.setOnClickListener(this);
         imageViewNew = (ImageView)findViewById(R.id.imageViewNew);
+        Animation.setAnimation(imageViewNew,700, Techniques.Tada);
         imageViewNew.setOnClickListener(this);
         imageViewSearch = (ImageView)findViewById(R.id.imageViewSearch);
+        Animation.setAnimation(imageViewSearch,700, Techniques.Tada);
         imageViewSearch.setOnClickListener(this);
 
         user = new User();

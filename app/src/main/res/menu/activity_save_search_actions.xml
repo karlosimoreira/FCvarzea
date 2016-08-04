@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activitys.profilerActivitys.UpdateActivity">
     <item
+        android:id="@+id/action_searchable_activity"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_search_black"
+        android:title="@string/action_searchable_activity"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+    <item
     android:id="@+id/action_save"
     android:orderInCategory="100"
     android:icon="@drawable/ic_check_circle_outline_white"

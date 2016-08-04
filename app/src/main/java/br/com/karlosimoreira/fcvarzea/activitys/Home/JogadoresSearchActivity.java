@@ -3,7 +3,6 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -28,12 +27,10 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.adapter.JogadorAdapter;
 import br.com.karlosimoreira.fcvarzea.domain.User;
-import br.com.karlosimoreira.fcvarzea.domain.util.ImagemProcess;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
 
@@ -46,10 +43,8 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     private String value;
     private int valueTipo;
     private Query query;
-    private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
     private ArrayList<User> userList;
-    private List<Bitmap> bitmapsList;
-    private ImagemProcess ip;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,22 +86,18 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         }
         queryJogadores(valueTipo);
         RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rvList);
-        if (rvUsers != null) {
-            rvUsers.setHasFixedSize( true );
-        }
 
         if (rvUsers != null) {
+            rvUsers.setHasFixedSize( true );
+            rvUsers.addOnItemTouchListener(new RecyclerViewTouchListener(this, rvUsers,this));
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
             JogadorAdapter adapter = new JogadorAdapter(getnListUserFirebase(query),this);
-            adapter.setRecyclerViewOnClickListenerHack(this);
             rvUsers.setAdapter(adapter);
         }
     }
 
     private ArrayList<User> getnListUserFirebase(Query mQuery){
         userList = new ArrayList<>();
-        bitmapsList = new ArrayList<>();
-        ip = new ImagemProcess();
 
         mQuery.addValueEventListener(new ValueEventListener() {
             @Override
@@ -114,8 +105,6 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
                 userList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     userList.add(ds.getValue(User.class));
-                    bitmapsList.add( ip.loadBitmap(ds.getValue(User.class).getPhoto()));
-                    //userList = new ArrayList(new HashSet(userList));
                 }
                 for (int i =0; i<userList.size(); i++){
                     Log.i("Tag", "Name: "+ userList.get(i).getName() + "\n Position: " + userList.get(i).getPosition()+ "\n Photo: " + userList.get(i).getPhoto()+ "\n Classificação: " + userList.get(i).getClassificacao()) ;
@@ -159,7 +148,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_save_actions, menu);
+        getMenuInflater().inflate(R.menu.activity_save_search_actions, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView;
         MenuItem item = menu.findItem(R.id.action_searchable_activity);
@@ -181,7 +170,6 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
             case android.R.id.home:
                 finish();
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -196,57 +184,51 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         Toast.makeText(this, "LongPressPosition: " + position, Toast.LENGTH_SHORT).show();
     }
 
-    public static class RecycleViewTouchEvent implements RecyclerView.OnItemTouchListener{
+    private static class RecyclerViewTouchListener implements RecyclerView.OnItemTouchListener{
 
         private Context mContext;
         private GestureDetector mGestureDetector;
         private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
 
-        public RecycleViewTouchEvent(Context mContext, final RecyclerView mRecyclerView, final RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack) {
+        public RecyclerViewTouchListener(Context mContext, final RecyclerView mRecyclerView,  RecyclerViewOnClickListenerHack rvoclh) {
             this.mContext = mContext;
-            this.mRecyclerViewOnClickListenerHack = mRecyclerViewOnClickListenerHack;
+            this.mRecyclerViewOnClickListenerHack = rvoclh;
 
             mGestureDetector = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener(){
                 @Override
                 public void onLongPress(MotionEvent e) {
                     super.onLongPress(e);
 
-                    View cv = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
+                    View childView = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
 
-                    if(cv != null && mRecyclerViewOnClickListenerHack != null){
-                        mRecyclerViewOnClickListenerHack.onLongPressClickListener(cv,
-                                mRecyclerView.getChildPosition(cv) );
+                    if(childView != null && mRecyclerViewOnClickListenerHack != null){
+                        mRecyclerViewOnClickListenerHack.onLongPressClickListener(childView,
+                                mRecyclerView.getChildAdapterPosition(childView) );
                     }
                 }
 
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
-                    View cv = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
-
-                    if(cv != null && mRecyclerViewOnClickListenerHack != null){
-                        mRecyclerViewOnClickListenerHack.onClickListener(cv,
-                                mRecyclerView.getChildPosition(cv) );
+                    View childView = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if(childView != null && mRecyclerViewOnClickListenerHack != null){
+                        mRecyclerViewOnClickListenerHack.onClickListener(childView,
+                                mRecyclerView.getChildAdapterPosition(childView) );
                     }
-
                     return(true);
                 }
             });
         }
 
-
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            mGestureDetector.onTouchEvent(e);
             return false;
         }
 
         @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-        }
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {}
 
         @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
     }
 }

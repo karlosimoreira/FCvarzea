@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.domain;
+package br.com.karlosimoreira.fcvarzea.domain.util;
 
 import android.app.Application;
 import android.content.Context;

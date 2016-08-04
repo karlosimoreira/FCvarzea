@@ -13,12 +13,14 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
+import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
 import br.com.karlosimoreira.fcvarzea.domain.util.ImagemProcess;
 import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
 import butterknife.Bind;
@@ -47,8 +49,8 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
 
     private ImagemProcess ip;
 
-private ArrayList<User> mJogadores = new ArrayList<>();
-private Context mContext;
+    private ArrayList<User> mJogadores = new ArrayList<>();
+    private Context mContext;
 
     public JogadorAdapter(ArrayList<User> mJogadores, Context mContext) {
         this.mJogadores = mJogadores;
@@ -64,8 +66,8 @@ private Context mContext;
 
     @Override
     public void onBindViewHolder(jogadorViewHolder holder, int position) {
+        Animation.setAnimation(holder.itemView,700, Techniques.Tada);
         holder.bindRestaurant(mJogadores.get(position));
-
     }
 
     @Override
@@ -79,16 +81,13 @@ private Context mContext;
         @Bind(R.id.tvName) TextView mTvName;
         @Bind(R.id.rbClassificacao) RatingBar mRbClassificacao;
 
-
         private Context mContext;
 
         public jogadorViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
-
         }
         public void bindRestaurant(User user) {
 
@@ -161,14 +160,14 @@ private Context mContext;
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            mRecyclerViewOnClickListenerHack = JogadorAdapter.mRecyclerViewOnClickListenerHack;
             if (mRecyclerViewOnClickListenerHack != null){
-                mRecyclerViewOnClickListenerHack.onClickListener(v,getPosition());
+                mRecyclerViewOnClickListenerHack.onClickListener(v,itemPosition);
             }
         }
     }
     public void setRecyclerViewOnClickListenerHack(RecyclerViewOnClickListenerHack r){
         mRecyclerViewOnClickListenerHack = r;
     }
+
 
 }

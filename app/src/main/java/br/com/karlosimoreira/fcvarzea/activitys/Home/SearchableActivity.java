@@ -120,29 +120,10 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
             case 1:
                 query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
                 break;
-            case 2:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            case 3:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            case 4:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            case 5:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            case 6:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            case 7:
-                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
-            default:
+            case 0:
                 query = databaseReference.child("User").orderByChild("name");
-
+                break;
         }
-
     }
 
     @Override
