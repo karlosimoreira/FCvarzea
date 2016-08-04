@@ -6,7 +6,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -148,7 +147,7 @@ public class BaseActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return adapter;
     }
-    public ArrayAdapter spinnerValuesAdapter(List<String>citys){
+    public ArrayAdapter spinnerValuesAdapter(ArrayList<String> citys){
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, citys);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

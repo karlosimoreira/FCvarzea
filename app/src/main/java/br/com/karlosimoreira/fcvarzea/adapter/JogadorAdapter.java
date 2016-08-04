@@ -43,7 +43,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
     public final int MEIA_OFENCIVO = 10;
     public final int CENTRO_AVANTE = 11;
     public final int PONTA_DIREITA = 12;
-    public RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
+    public static RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
 
     private ImagemProcess ip;
 
@@ -161,7 +161,7 @@ private Context mContext;
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            mRecyclerViewOnClickListenerHack = UserNoRecyclerAdapter.mRecyclerViewOnClickListenerHack;
+            mRecyclerViewOnClickListenerHack = JogadorAdapter.mRecyclerViewOnClickListenerHack;
             if (mRecyclerViewOnClickListenerHack != null){
                 mRecyclerViewOnClickListenerHack.onClickListener(v,getPosition());
             }

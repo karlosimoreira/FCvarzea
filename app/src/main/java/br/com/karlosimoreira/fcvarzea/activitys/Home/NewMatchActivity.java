@@ -19,14 +19,10 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,13 +34,14 @@ import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.Calendario;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
+import br.com.karlosimoreira.fcvarzea.domain.util.StringUtils;
 
 public class NewMatchActivity extends BaseActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener,  DialogInterface.OnCancelListener, TimePickerDialog.OnTimeSetListener{
 
     public  static final int JOGADORES_ACTIVITY = 1;
     private User dataUser;
-    private ArrayList listCity;
-    private ArrayList listState;
+    private ArrayList<String> listCity;
+    private ArrayList<String > listState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +49,8 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_new_match);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        listCity =new ArrayList<>();
+        listState =new ArrayList<>();
 
        /* DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
         connectedRef.addValueEventListener(new ValueEventListener() {
@@ -75,16 +74,15 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listCity =new ArrayList<>();
-                listState =new ArrayList<>();
+
                 for (DataSnapshot d : dataSnapshot.getChildren()){
                     dataUser = d.getValue(User.class);
-                    if(dataUser.getCity() != null){
+                    if(!StringUtils.isNullOrBlank(dataUser.getCity())){
                         listCity.add(dataUser.getCity());
                         listCity = new ArrayList(new HashSet(listCity));
                     }
 
-                    if (dataUser.getState() != null && dataUser.getState() != ""){
+                    if (!StringUtils.isNullOrBlank(dataUser.getState())){
                         listState.add(dataUser.getState());
                         listState = new ArrayList(new HashSet(listState));
                     }
@@ -136,18 +134,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         Calendario.day = dayOfMonth;
 
         tvData.setText(setTextDate());
-
-       /* TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(
-                this,
-                tDefault.get(Calendar.HOUR_OF_DAY),
-                tDefault.get(Calendar.MINUTE),
-                true
-        );
-        timePickerDialog.setOnCancelListener(this);
-        timePickerDialog.show(getFragmentManager(), "timePickerDialog");
-        timePickerDialog.setTitle("Horário do Jogo");
-
-        timePickerDialog.setThemeDark(false);*/
     }
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
@@ -158,8 +144,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         }
         Calendario.hour = hourOfDay;
         Calendario.minute = minute;
-
-        //tvData.setText(setTextDate());
     }
 
     private void init(){
@@ -309,8 +293,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
                         break;
                     case R.id.rbTudo:
                         valueTipo = "0";
-                        //clausuraPrimaria = null;
-                        //clausuraPrimaria = null;
                         spValues.setVisibility(View.GONE);
                         break;
                 }
@@ -320,7 +302,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
             Collections.sort(listState);
         if(listCity != null) {
             Collections.sort(listCity);
-            spValues.setAdapter(spinnerValuesAdapter(listCity));
         }
 
 
@@ -334,9 +315,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onClick(View view) {
-               if(valuePrimario != null) {
-                    valuePrimario = spValues.getSelectedItem().toString();
-                }
+                valuePrimario = spValues.getSelectedItem().toString();
                 Log.v("onClick ", clausuraPrimaria + " & " +valuePrimario);
                 enviarDados(clausuraPrimaria, valuePrimario,valueTipo);
                 dialog.dismiss();
@@ -417,8 +396,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
                 }
             }
         });
-
-
         dialog.show();
     }
 
@@ -435,10 +412,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
 
     public String setTextDate(){
         String data = ( (Calendario.day < 10 ? "0"+Calendario.day : Calendario.day)+"/"+
-                (Calendario.month+1 < 10 ? "0"+(Calendario.month+1) : Calendario.month+1)+"/"+
-                Calendario.year ); /*" às "+
-                (Calendario.hour < 10 ? "0"+Calendario.hour : Calendario.hour)+"h"+
-                (Calendario.minute < 10 ? "0"+Calendario.minute : Calendario.minute));*/
+                (Calendario.month+1 < 10 ? "0"+(Calendario.month+1) : Calendario.month+1)+"/"+ Calendario.year );
         return data;
     }
 

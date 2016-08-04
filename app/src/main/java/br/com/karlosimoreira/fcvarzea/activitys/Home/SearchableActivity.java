@@ -4,10 +4,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.provider.SearchRecentSuggestions;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -26,8 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.adapter.UserRecyclerAdapter;
-import br.com.karlosimoreira.fcvarzea.adapter.UserViewHolder;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
@@ -35,7 +32,6 @@ import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
 public class SearchableActivity extends AppCompatActivity implements RecyclerViewOnClickListenerHack {
     public static Context mContext;
     private RecyclerView rvUsers;
-    private UserRecyclerAdapter adapter;
     private DatabaseReference databaseReference;
     private ProgressBar progressBar;
     private Toolbar toolbar;
@@ -97,12 +93,12 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
             rvUsers.setHasFixedSize( true );
         }
         rvUsers.setLayoutManager( new LinearLayoutManager(this));
-        adapter = new UserRecyclerAdapter(
+       /* adapter = new UserRecyclerAdapter(
                 User.class,
                 R.layout.modelo_convocar_jogadores,
                 UserViewHolder.class,
                 query);
-        rvUsers.setAdapter(adapter);
+        rvUsers.setAdapter(adapter);*/
 
     }
     private void getDataForActivity(){
@@ -152,7 +148,7 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        adapter.cleanup();
+       // adapter.cleanup();
     }
 
     public void hendleSearch( Intent intent ){

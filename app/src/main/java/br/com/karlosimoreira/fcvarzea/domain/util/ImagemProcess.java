@@ -25,7 +25,6 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 
-import br.com.karlosimoreira.fcvarzea.activitys.Home.JogadoresActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.JogadoresSearchActivity;
 
 
