@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "836916932650",
+    "firebase_url": "https://nosso-chat-fbc.firebaseio.com",
+    "project_id": "nosso-chat-fbc",
+    "storage_bucket": "nosso-chat-fbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836916932650:android:47cc7f427361820a",
+        "android_client_info": {
+          "package_name": "br.com.karlosimoreira.fcvarzea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836916932650-dufe9i6pmucfs3igl2lmutchtpt3sd8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZDlfmnUOBvsHU70ionLzjRWUY6xQMiic"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

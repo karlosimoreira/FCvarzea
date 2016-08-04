@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/imgCampo"
+        android:src="@drawable/ic_campo_mod2"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignBottom="@+id/imgCampo"
+        android:layout_centerHorizontal="true"
+        android:tag="gl"
+        android:id="@+id/gl" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="41dp"
+        android:layout_above="@+id/gl"
+        android:layout_alignRight="@+id/btnCancel"
+        android:layout_alignEnd="@+id/btnCancel"
+        android:tag="le"
+        android:id="@+id/le" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/le"
+        android:layout_centerHorizontal="true"
+        android:tag="zg"
+        android:id="@+id/zg" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/zg"
+        android:layout_alignLeft="@+id/btnSave"
+        android:layout_alignStart="@+id/btnSave"
+        android:tag="ld"
+        android:id="@+id/ld" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/zg"
+        android:layout_alignStart="@+id/zg"
+        android:tag="vl"
+        android:id="@+id/vl" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imgCampo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:tag="mo"
+        android:id="@+id/mo"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/mo"
+        android:layout_alignLeft="@+id/le"
+        android:layout_alignStart="@+id/le"
+        android:tag="me"
+        android:id="@+id/me"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/mo"
+        android:layout_alignLeft="@+id/ld"
+        android:layout_alignStart="@+id/ld"
+        android:tag="md"
+        android:id="@+id/md"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="36dp"
+        android:layout_above="@+id/me"
+        android:layout_toLeftOf="@+id/me"
+        android:layout_toStartOf="@+id/me"
+        android:clickable="true"
+        android:tag="pe"
+        android:id="@+id/pe"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/pe"
+        android:layout_toRightOf="@+id/md"
+        android:layout_toEndOf="@+id/md"
+        android:tag="pd"
+        android:id="@+id/pd"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/pe"
+        android:layout_toRightOf="@+id/mo"
+        android:layout_toEndOf="@+id/mo"
+        android:tag="sa"
+        android:id="@+id/sa"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/sa"
+        android:layout_toLeftOf="@+id/mo"
+        android:layout_toStartOf="@+id/mo"
+        android:tag="ca"
+        android:id="@+id/ca"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:id="@+id/btnCancel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:background="#00ffffff"
+        android:onClick="cancelPosition"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:id="@+id/btnSave"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:background="#00ffffff"
+        android:onClick="savePosition"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goleiro"
+        android:id="@+id/txtPosition"
+        android:layout_above="@+id/mo"
+        android:textSize="20dp"
+
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

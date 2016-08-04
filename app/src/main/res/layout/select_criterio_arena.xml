@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_dialog_busca_por_arena"
+        android:id="@+id/tvBuscarPor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linerRB"
+        android:layout_below="@+id/tvBuscarPor">
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_cidade"
+                android:layout_marginRight="55dp"
+                android:id="@+id/rbCidade"
+                style="@style/TextViewTextAppearance"
+                android:checked="true" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spCidade" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_Estado"
+                android:id="@+id/rbEstado"
+                style="@style/TextViewTextAppearance" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spEstado" />
+        </RadioGroup>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_dialog_busca_por_arena_filtros"
+        android:id="@+id/tvFiltros"
+        android:layout_below="@+id/linerRB"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FrameCK"
+        android:layout_below="@+id/tvFiltros">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_arena_filtro_data"
+                android:id="@+id/cbData"
+                style="@style/TextViewTextAppearance"/>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_arena_filtro_dia"
+                android:layout_marginTop="15dp"
+                android:id="@+id/cbDia"
+                style="@style/TextViewTextAppearance"
+                android:checked="false"
+                android:layout_below="@+id/tvData" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_data"
+                android:id="@+id/tvData"
+                android:layout_below="@+id/cbData"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                style="@style/TextViewTextAppearance"
+                android:visibility="gone" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spDia"
+                android:layout_below="@+id/cbDia"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameCK2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/FrameCK">
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/ic_search_black"
+            android:id="@+id/btnSearch"
+            style="@style/TextViewTextAppearance"
+            android:textColor="#00ffffff"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="55dp"/>
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/ic_cancel_black"
+            android:id="@+id/btnCancel"
+            style="@style/TextViewTextAppearance"
+            android:allowUndo="false"
+            android:textColor="#01ffffff"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="55dp"/>
+    </FrameLayout>
+
+</RelativeLayout>

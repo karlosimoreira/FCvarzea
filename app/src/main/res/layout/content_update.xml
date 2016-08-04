@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activitys.profilerActivitys.UpdateActivity"
+    tools:showIn="@layout/activity_update">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:background="?attr/colorPrimary"
+            android:id="@+id/linear"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/scrollView"
+            android:layout_alignStart="@+id/scrollView">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageShield"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cropToPadding ="true"
+                android:src="@drawable/ic_account"
+                android:onClick="LoadImage"
+                android:layout_centerHorizontal="true"
+                app:civ_border_width="4dp"
+                app:civ_border_color="@color/mdtp_white"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageShield"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/viewName">
+                <AutoCompleteTextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:textColor="@color/colorIcons"
+                    android:singleLine="true"
+                    android:layout_above="@+id/position"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="28dp"
+                    android:textStyle="bold"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_position"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_below="@+id/viewName" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagePosition"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:cropToPadding ="true"
+                android:src="@drawable/ic_position_gl"
+                android:onClick="dialogDisplayPosition"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/position"
+                android:layout_alignRight="@+id/position"
+                android:layout_alignEnd="@+id/position"
+                android:layout_marginRight="31dp"
+                android:layout_marginEnd="31dp" />
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prompt_birthDate"
+                android:id="@+id/txtPrompt_birthDate"
+
+                android:layout_below="@+id/viewName"
+                android:layout_toRightOf="@+id/imageShield"
+                android:layout_toEndOf="@+id/imageShield" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/01/2016"
+                android:id="@+id/txtBirthDate"
+                android:textColor="@color/colorIcons"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:onClick="getBirthDate"
+                android:layout_alignBottom="@+id/imagePosition"
+                android:layout_toRightOf="@+id/imageShield"
+                android:layout_toEndOf="@+id/imageShield" />
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear"
+            android:orientation="vertical"
+            android:id="@+id/scrollView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/prompt_phone"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/prompt_city"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/prompt_state"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_textview_melhor_pe"
+                        android:id="@+id/tvMelhorPe" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spPe"
+                        android:spinnerMode="dropdown" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prompt_participacao"
+                        android:id="@+id/textView3"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_cb_ativo"
+                            android:id="@+id/cbAtivo"
+                            android:checked="true"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_cb_mensal"
+                            android:id="@+id/cbMensal"
+                            android:layout_gravity="center" />
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ProprietarioArena"
+                        android:text="@string/title_cb_proprietario_arena"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_cb_proprietario_arena_sim"
+                            android:id="@+id/cbSim"
+                            />
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_cb_proprietario_arena_nao"
+                            android:id="@+id/cbNao"
+                            android:layout_gravity="center"
+                            android:checked="true" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+        </ScrollView>
+
+</RelativeLayout>
+
+
+

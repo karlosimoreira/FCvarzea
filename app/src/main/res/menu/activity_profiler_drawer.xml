@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_update_profiler"
+            android:icon="@drawable/ic_life_cycle"
+            android:title="@string/update_profile" />
+        <item
+            android:id="@+id/nav_link_accounts"
+            android:icon="@drawable/ic_link"
+            android:title="@string/title_activity_link_accounts" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_chat"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Chat" />
+
+        </menu>
+    </item>
+    <item android:title="">
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@mipmap/ic_exit"
+                android:title="@string/logout" />
+
+
+    </item>
+
+</menu>

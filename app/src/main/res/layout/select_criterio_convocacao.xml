@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_dialog_busca_por_arena"
+        android:id="@+id/tvBuscarPor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linerRB"
+        android:layout_below="@+id/tvBuscarPor">
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_cidade"
+                android:checked="true"
+                android:layout_marginRight="15dp"
+                android:id="@+id/rbCidade"
+                style="@style/TextViewTextAppearance" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_busca_por_Estado"
+                android:id="@+id/rbEstado"
+                style="@style/TextViewTextAppearance" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/title_dialog_busca_por_Tudo"
+                android:id="@+id/rbTudo"
+                style="@style/TextViewTextAppearance"
+                android:checked="true" />
+
+        </RadioGroup>
+    </FrameLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spValues"
+        android:layout_below="@+id/linerRB"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_dialog_busca_por_arena_filtros"
+        android:id="@+id/tvFiltros"
+        android:layout_below="@+id/spValues"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/FrameCK"
+        android:layout_below="@+id/tvFiltros">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_dialog_convoca_jogador_filtro_posicao"
+            android:id="@+id/cbCovocarPosicao"
+            style="@style/TextViewTextAppearance"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_convoca_jogador_filtro_classificaca"
+                android:id="@+id/cbCovocarClasificacao"
+                style="@style/TextViewTextAppearance"
+                android:checked="false"
+               android:layout_below="@+id/spPosition" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spPosition"
+                android:layout_below="@+id/cbCovocarPosicao"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="gone" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spClassificacao"
+                android:layout_below="@+id/cbCovocarClasificacao"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_dialog_convoca_jogador_filtro_idade"
+                android:id="@+id/cbIdade"
+                android:layout_below="@+id/spClassificacao"
+                style="@style/TextViewTextAppearance"/>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sbIdadeValor"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/cbIdade"
+                android:max="50"
+                android:layout_toLeftOf="@+id/tvIdadeValor"
+                android:layout_toStartOf="@+id/tvIdadeValor"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/tvIdadeValor"
+                android:layout_alignBottom="@+id/sbIdadeValor"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                style="@style/TextViewTextAppearance"
+                android:visibility="gone" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sbIdadeValor2"
+                android:max="100"
+                android:layout_below="@+id/sbIdadeValor"
+                android:layout_toStartOf="@+id/tvIdadeValor2"
+                android:layout_toLeftOf="@+id/tvIdadeValor2"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="51"
+                android:id="@+id/tvIdadeValor2"
+                android:layout_below="@+id/tvIdadeValor"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                style="@style/TextViewTextAppearance"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameCK2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/FrameCK">
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/ic_search_black"
+            android:id="@+id/btnSearch"
+            style="@style/TextViewTextAppearance"
+            android:textColor="#00ffffff"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="55dp"/>
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/ic_cancel_black"
+            android:id="@+id/btnCancel"
+            style="@style/TextViewTextAppearance"
+            android:allowUndo="false"
+            android:textColor="#01ffffff"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="55dp"/>
+    </FrameLayout>
+
+</RelativeLayout>

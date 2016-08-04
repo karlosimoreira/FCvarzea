@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_textview_tempo"
+        android:id="@+id/tvTempo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"
+        android:layout_marginTop="10dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tvTempo">
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_rb_tempo1"
+        android:id="@+id/rbTempo1"
+        style="@style/TextViewTextAppearance"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_rb_tempo2"
+        android:id="@+id/rbTempo2"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        style="@style/TextViewTextAppearance"
+        android:checked="true" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_textview_duracao"
+        android:id="@+id/tvDuracao"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spDuracao"
+        android:layout_below="@+id/tvDuracao"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_textview_numero_jogadores"
+        android:id="@+id/tvNumJogadores"
+        android:layout_below="@+id/spDuracao"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spNunJogadores"
+        android:layout_below="@+id/tvNumJogadores"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_textview_criterio"
+        android:id="@+id/tvCriterio"
+        android:layout_below="@+id/spNunJogadores"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+    <RadioGroup
+        android:id="@+id/radioGroupCriterio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvCriterio">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_rb_criterio1"
+            android:id="@+id/rbCriterio1"
+            style="@style/TextViewTextAppearance"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_rb_criterio2"
+            android:id="@+id/rbCriterio2"
+            style="@style/TextViewTextAppearance"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_rb_criterio3"
+            android:id="@+id/rbCriterio3"
+            style="@style/TextViewTextAppearance"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_textview_arena"
+        android:id="@+id/btnArena"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/radioGroupCriterio" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_button_buscar_jogadores"
+        android:id="@+id/btnConvocarJogadores"
+        android:layout_below="@+id/tvArena"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prompt_name"
+        android:id="@+id/tvArena"
+        android:layout_below="@+id/btnArena"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/tvConvocacao"
+        android:layout_below="@+id/btnConvocarJogadores"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/TextViewTextAppearance"/>
+
+
+</RelativeLayout>
