@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDados"
+        android:paddingTop="20dp"
+        android:textSize="22sp"
+        android:text="Dados Pessuais:"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="05dp"/>
+    <TextView
+        android:id="@+id/tvIdade"
+        android:textSize="18sp"
+        android:text="Idade: 23"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tvReside"
+        android:textSize="18sp"
+        android:text="Reside: Betim/MG"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/tvEmail"
+        android:textSize="18sp"
+        android:text="Email: Não informado"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/tvTelefone"
+        android:textSize="18sp"
+        android:text="Telefone: Não informado"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/tvDadosTecnicos"
+        android:layout_marginTop="05dp"
+        android:textSize="22sp"
+        android:text="Dados Tecinicos:"
+        android:textColor="@color/colorPrimarytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

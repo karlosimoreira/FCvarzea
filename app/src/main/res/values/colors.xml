@@ -7,6 +7,9 @@
     <color name="OliveDrab">#6B8E23</color>
     <color name="YellowGreen">#9ACD32</color>
     <color name="Olive">#808000</color>
+    <color name="colorPrimarytext">#212121</color>
+    <color name="colorSecondText">#999</color>
+    <color name="coloLink">#1ea4f7</color>
 
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
@@ -16,6 +19,9 @@
     <color name="colorSecondaryText">#727272</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#B6B6B6</color>
+
+    <color name="colorFAB">#FF9800</color>
+    <color name="colorFABPressed">#F57C00</color>
 
 
     <color name="Facebook">#3b5998</color>

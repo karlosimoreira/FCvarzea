@@ -1,32 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.karlosimoreira.fcvarzea.activitys.Home.DetailsJogadorActivity"
+    tools:showIn="@layout/activity_details_jogador">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="275dp"
-        android:background="?attr/colorPrimary"
-        android:id="@+id/linear"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/scrollView"
-        android:layout_alignStart="@+id/scrollView">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="@string/large_text" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageShield"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:cropToPadding ="true"
-            android:src="@drawable/ic_account"
-            android:onClick="LoadImage"
-            app:civ_border_width="4dp"
-            app:civ_border_color="@color/mdtp_white"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-
-
-    </RelativeLayout>
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

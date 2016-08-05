@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -43,11 +46,20 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     private String value;
     private int valueTipo;
     private Query query;
-    private ArrayList<User> userList;
-    int position;
+    private ArrayList<User> auxUserList;
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Transições
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
+
+            TransitionInflater inflater = TransitionInflater.from( this );
+            Transition transition = inflater.inflateTransition( R.transition.transitions );
+
+            getWindow().setSharedElementExitTransition( transition );
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogadores);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -85,19 +97,31 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
             progressBar.setVisibility(View.GONE);
         }
         queryJogadores(valueTipo);
-        RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rvList);
+        final RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rvList);
 
         if (rvUsers != null) {
+            auxUserList = getnListUserFirebase(query);
             rvUsers.setHasFixedSize( true );
             rvUsers.addOnItemTouchListener(new RecyclerViewTouchListener(this, rvUsers,this));
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
-            JogadorAdapter adapter = new JogadorAdapter(getnListUserFirebase(query),this);
+            JogadorAdapter adapter = new JogadorAdapter(auxUserList,this);
             rvUsers.setAdapter(adapter);
+
+            mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.srlSwipe);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    for (int i = 0; i<getnListUserFirebase(query).size(); i++){
+
+                    }
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+            });
         }
     }
 
     private ArrayList<User> getnListUserFirebase(Query mQuery){
-        userList = new ArrayList<>();
+        final ArrayList<User>  userList = new ArrayList<>();
 
         mQuery.addValueEventListener(new ValueEventListener() {
             @Override
@@ -176,7 +200,30 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
     @Override
     public void onClickListener(View view, int position) {
+        User user  =auxUserList.get(position);
         Toast.makeText(this, "Position: "+ position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DetailsJogadorActivity.class);
+        intent.putExtra("name", user.getName());
+        intent.putExtra("photo", user.getPhoto());
+        intent.putExtra("position", user.getPosition());
+
+       /* // TRANSITIONS
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
+
+            View ivPhoto = view.findViewById(R.id.ivPhoto);
+            View tvName = view.findViewById(R.id.tvName);
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    Pair.create( ivPhoto, "elementPhoto" ),
+                    Pair.create( tvName, "elementName" ));
+
+            this.startActivity( intent, options.toBundle() );
+        }
+        else{
+            this.startActivity(intent);
+        }*/
+        this.startActivity(intent);
+
     }
 
     @Override
