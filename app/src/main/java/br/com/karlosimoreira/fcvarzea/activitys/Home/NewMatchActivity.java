@@ -3,12 +3,9 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
-import android.transition.Fade;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,6 +52,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         setSupportActionBar(toolbar);
         listCity =new ArrayList<>();
         listState =new ArrayList<>();
+
 
         databaseReference = LibraryClass.getFirebase().child(User.NODE_DEFAULT);
         ValueEventListener valueEventListener = new ValueEventListener() {
@@ -257,26 +255,32 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         cbIdade =(CheckBox)dialog.findViewById(R.id.cbIdade);
         radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
 
-
+        valueTipo = "0";
+        clausuraPrimaria = "city";
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId) {
                     case R.id.rbCidade:
+                        spValues.setActivated(true);
                         spValues.setVisibility(View.VISIBLE);
                         clausuraPrimaria = "city";
                         valueTipo = "1";
                         spValues.setAdapter(spinnerValuesAdapter(listCity));
+                        valuePrimario = spValues.getSelectedItem().toString();
                         break;
                     case R.id.rbEstado:
+                        spValues.setActivated(true);
                         spValues.setVisibility(View.VISIBLE);
                         clausuraPrimaria = "state";
                         valueTipo = "1";
                         spValues.setAdapter(spinnerValuesAdapter(listState));
+                        valuePrimario = spValues.getSelectedItem().toString();
                         break;
                     case R.id.rbTudo:
                         valueTipo = "0";
                         spValues.setVisibility(View.GONE);
+                        spValues.setActivated(false);
                         break;
                 }
             }
@@ -297,12 +301,19 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onClick(View view) {
-                if (StringUtils.isNullOrEmpty(valuePrimario)){
+                Log.v("onClick ", clausuraPrimaria + " & " +valuePrimario);
+                if (StringUtils.isNullOrEmpty(valuePrimario) || valuePrimario.equals("None")){
                     valuePrimario = "None";
                 }else {
-                    valuePrimario = spValues.getSelectedItem().toString();
+                    if (!spValues.isActivated()){
+                        valuePrimario = "None";
+                    }else {
+                        valuePrimario = spValues.getSelectedItem().toString();
+                    }
+
                 }
-                Log.v("onClick ", clausuraPrimaria + " & " +valuePrimario);
+
+
                 enviarDados(clausuraPrimaria, valuePrimario,valueTipo);
                 dialog.dismiss();
             }
