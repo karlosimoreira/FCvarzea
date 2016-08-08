@@ -312,8 +312,6 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
                     }
 
                 }
-
-
                 enviarDados(clausuraPrimaria, valuePrimario,valueTipo);
                 dialog.dismiss();
             }

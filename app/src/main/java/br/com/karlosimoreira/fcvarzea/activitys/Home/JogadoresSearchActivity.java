@@ -202,12 +202,10 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
     @Override
     public void onClickListener(View view, int position) {
-        User user  = auxUserList.get(position);
         Toast.makeText(this, "Position: "+ position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DetailsJogadorActivity.class);
-        intent.putExtra("name", user.getName());
-        intent.putExtra("photo", user.getPhoto());
-        intent.putExtra("position", user.getPosition());
+        intent.putExtra("user", auxUserList.get(position));
+
 
        // TRANSITIONS
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
