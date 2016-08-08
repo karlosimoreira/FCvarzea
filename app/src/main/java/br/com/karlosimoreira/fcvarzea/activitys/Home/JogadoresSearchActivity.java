@@ -205,8 +205,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         Toast.makeText(this, "Position: "+ position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DetailsJogadorActivity.class);
         intent.putExtra("user", auxUserList.get(position));
-
-
+        
        // TRANSITIONS
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
