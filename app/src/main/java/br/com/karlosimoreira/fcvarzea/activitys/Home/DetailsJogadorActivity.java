@@ -17,7 +17,7 @@ public class DetailsJogadorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Transições
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
+       /* if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
             TransitionInflater inflater = TransitionInflater.from( this );
             Transition transition = inflater.inflateTransition( R.transition.transitions );
@@ -27,7 +27,7 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_jogador);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
