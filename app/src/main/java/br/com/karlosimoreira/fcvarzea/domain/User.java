@@ -1,6 +1,8 @@
 package br.com.karlosimoreira.fcvarzea.domain;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
@@ -12,7 +14,7 @@ import java.util.Map;
 
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 
-public class User {
+public class User implements Parcelable{
     public static String PROVIDER = "br.com.karlosimoreira.fcvarzea.domain.User.PROVIDER";
     public static final String NODE_DEFAULT = "User";
     private  final String PROVIDER_FACEBOOK = "facebook";
@@ -298,4 +300,52 @@ public class User {
         String token = getProviderSP( context );
         return (token.contains(PROVIDER_FACEBOOK) || token.contains(PROVIDER_GOOGLE));
     }
+
+    // PARCELABLE
+    public User(Parcel parcel){
+        setId(parcel.readString());
+        setName(parcel.readString());
+        setEmail(parcel.readString());
+        setPhone(parcel.readString());
+        setPhoto(parcel.readString());
+        setPosition(parcel.readString());
+        setCity(parcel.readString());
+        setState(parcel.readString());
+        setStatus(parcel.readString());
+        setPeBom(parcel.readString());
+        setTipo(parcel.readString());
+        setProprietario(parcel.readString());
+        setClassificacao(parcel.readString());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString( getId() );
+        dest.writeString( getName() );
+        dest.writeString( getEmail() );
+        dest.writeString( getPhone() );
+        dest.writeString( getPhoto() );
+        dest.writeString( getPosition() );
+        dest.writeString( getCity() );
+        dest.writeString( getState() );
+        dest.writeString( getStatus() );
+        dest.writeString( getPeBom() );
+        dest.writeString( getTipo() );
+        dest.writeString( getProprietario() );
+        dest.writeString( getClassificacao() );
+    }
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>(){
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

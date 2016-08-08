@@ -24,7 +24,7 @@
             app:expandedTitleMarginEnd="64dp">
 
 
-            <com.facebook.drawee.view.SimpleDraweeView
+            <ImageView
                 android:id="@+id/ivUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,7 +32,8 @@
                 fresco:placeholderImage="@drawable/loading_img"
                 fresco:failureImage="@drawable/error_img"
                 fresco:retryImage="@drawable/retry_img"
-                android:transitionName="element1"
+                android:transitionName="elementPhoto"
+                android:src="@drawable/varzea"
                 app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
