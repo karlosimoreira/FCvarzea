@@ -48,6 +48,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     private String value;
     private int valueTipo;
     private Query query;
+    private RecyclerView rvUsers;
     private ArrayList<User> auxUserList;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -55,22 +56,34 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     protected void onCreate(Bundle savedInstanceState) {
         //Transições
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
-
             TransitionInflater inflater = TransitionInflater.from( this );
             Transition transition = inflater.inflateTransition( R.transition.transitions );
-
             getWindow().setSharedElementExitTransition( transition );
         }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogadores);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         databaseReference = LibraryClass.getFirebase();
-        mContext = this;
         getDataForActivity();
+        mContext = this;
+
+        if(savedInstanceState != null){
+            auxUserList = savedInstanceState.getParcelableArrayList("auxUserList");
+        }else {
+
+            queryJogadores(valueTipo);
+            auxUserList = getnListUserFirebase(query);
+        }
 
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("auxUserList", auxUserList);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -78,6 +91,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     }
 
     private void init(){
+        Log.i("onResume","init");
         toolbar.setTitle( getResources().getString(R.string.title_activity_summon_players) );
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,7 +101,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
             public boolean onMenuItemClick(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.action_save:
-                        Toast.makeText(JogadoresSearchActivity.this,"Salvar Lista de convocados", Toast.LENGTH_LONG).show();
+                        Toast.makeText(JogadoresSearchActivity.this,"Salvar Lista de convocados", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
@@ -98,11 +112,10 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
         }
-        queryJogadores(valueTipo);
-        final RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rvList);
+
+         rvUsers = (RecyclerView) findViewById(R.id.rvList);
 
         if (rvUsers != null) {
-            auxUserList = getnListUserFirebase(query);
             rvUsers.setHasFixedSize( true );
             rvUsers.addOnItemTouchListener(new RecyclerViewTouchListener(this, rvUsers,this));
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
@@ -113,13 +126,19 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    for (int i = 0; i<getnListUserFirebase(query).size(); i++){
-
-                    }
+                    RefreshData();
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
             });
         }
+    }
+
+    private void RefreshData(){
+        rvUsers.setHasFixedSize( true );
+        rvUsers.addOnItemTouchListener(new RecyclerViewTouchListener(this, rvUsers,this));
+        rvUsers.setLayoutManager( new LinearLayoutManager(this));
+        JogadorAdapter adapter = new JogadorAdapter(auxUserList,this);
+        rvUsers.setAdapter(adapter);
     }
 
     private ArrayList<User> getnListUserFirebase(Query mQuery){
@@ -158,11 +177,11 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
     private void queryJogadores(int tipo){
         switch(tipo)
         {
-            case 1:
-                 query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
-                break;
             case 0:
                 query = databaseReference.child("User").orderByChild("name");
+                break;
+            case 1:
+                query = databaseReference.child("User").orderByChild(clausura).equalTo(value);
                 break;
         }
     }
@@ -202,11 +221,11 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
     @Override
     public void onClickListener(View view, int position) {
-        Toast.makeText(this, "Position: "+ position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Position: "+ position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DetailsJogadorActivity.class);
         intent.putExtra("user", auxUserList.get(position));
-        
-       // TRANSITIONS
+
+      // TRANSITIONS
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
             View ivPhoto = view.findViewById(R.id.ivPhoto);
@@ -214,15 +233,13 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
                     Pair.create( ivPhoto, "elementPhoto" ),
-                    Pair.create( tvName, "elementName" ));
+                     Pair.create( tvName, "elementName" ));
 
             this.startActivity( intent, options.toBundle() );
         }
         else {
             this.startActivity(intent);
         }
-        this.startActivity(intent);
-
     }
 
     @Override

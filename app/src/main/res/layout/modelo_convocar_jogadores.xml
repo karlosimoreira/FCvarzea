@@ -43,7 +43,7 @@
                 android:padding="5dp"
                 android:layout_alignParentTop="true"
 
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/abc_primary_text_disable_only_material_light"
                 android:textColorHint="@color/abc_input_method_navigation_guard"

@@ -26,15 +26,12 @@
 
             <ImageView
                 android:id="@+id/ivUser"
+                android:layout_alignParentLeft="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                fresco:actualImageScaleType="centerCrop"
-                fresco:placeholderImage="@drawable/loading_img"
-                fresco:failureImage="@drawable/error_img"
-                fresco:retryImage="@drawable/retry_img"
-                android:src="@drawable/varzea"
-                android:transitionName="elementPhoto"
-                app:layout_collapseMode="parallax"/>
+                android:layout_marginRight="6dp"
+                android:scaleType="centerCrop"
+                android:src="@null" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -75,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:clickable="true"
-        android:src="@drawable/ic_plus"
+        android:src="@mipmap/ic_favorite"
         app:backgroundTint="@color/colorFAB"
         app:fabSize="mini"
         app:borderWidth="0dp"
