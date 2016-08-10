@@ -31,6 +31,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="6dp"
                 android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
                 android:src="@null" />
 
             <android.support.v7.widget.Toolbar

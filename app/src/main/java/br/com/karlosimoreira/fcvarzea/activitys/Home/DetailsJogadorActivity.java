@@ -2,6 +2,7 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +19,7 @@ import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 
 public class DetailsJogadorActivity extends AppCompatActivity {
-    private static final int MAX_WIDTH = 500;
-    private static final int MAX_HEIGHT = 500;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView ivPhoto;
     private Toolbar toolbar;
     private User user;
@@ -36,6 +36,7 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Salvando o estado da activity
         if(savedInstanceState != null){
             user = savedInstanceState.getParcelable("user");
         }
@@ -44,6 +45,7 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         }
 
 
+        //Botão de ação Favorito
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +68,11 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         init();
     }
     private void init(){
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        mCollapsingToolbarLayout.setTitle(user.getName() );
         toolbar.setTitle( user.getName()) ;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
 
         ivPhoto = (ImageView)findViewById(R.id.ivUser);
         Picasso.with(this)
@@ -77,11 +82,9 @@ public class DetailsJogadorActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
+        if(item.getItemId() == android.R.id.home){
+            finish();
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }

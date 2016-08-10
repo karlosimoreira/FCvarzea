@@ -54,7 +54,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Transições
+       //Transições
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
             TransitionInflater inflater = TransitionInflater.from( this );
             Transition transition = inflater.inflateTransition( R.transition.transitions );
@@ -95,6 +95,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         toolbar.setTitle( getResources().getString(R.string.title_activity_summon_players) );
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -126,7 +127,7 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    RefreshData();
+                    //RefreshData();
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
             });
@@ -229,17 +230,17 @@ public class JogadoresSearchActivity extends AppCompatActivity implements Recycl
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
             View ivPhoto = view.findViewById(R.id.ivPhoto);
-            View tvName = view.findViewById(R.id.tvName);
+           // View tvName = view.findViewById(R.id.tvName);
 
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                    Pair.create( ivPhoto, "elementPhoto" ),
-                     Pair.create( tvName, "elementName" ));
+                    Pair.create( ivPhoto, "elementPhoto"));
 
             this.startActivity( intent, options.toBundle() );
         }
         else {
             this.startActivity(intent);
         }
+        //this.startActivity(intent);
     }
 
     @Override
