@@ -19,6 +19,7 @@ import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 
 public class DetailsJogadorTestActivity extends AppCompatActivity {
+    public static final String EXTRA_NAME = "user";
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView ivPhoto;
     private Toolbar toolbar;
@@ -74,7 +75,7 @@ public class DetailsJogadorTestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        ivPhoto = (ImageView)findViewById(R.id.ivUser);
+        ivPhoto = (ImageView)findViewById(R.id.iv_car);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FC Varzéa 7.9</string>
+    <string name="app_name">FC Varzéa 8.0</string>
 
     <!-- Strings related to login -->
     <string name="prompt_name">Nome</string>
@@ -143,5 +143,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_details_jogador">DetailsJogadorActivity</string>
+    <string name="Name_teste">Carlos Alberto Reis Moreira</string>
 
 </resources>

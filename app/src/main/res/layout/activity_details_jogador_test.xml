@@ -28,16 +28,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:transitionName="element1"
+            android:transitionName="elementPhoto"
             app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/tb_main"
+                android:id="@+id/toolbar"
                 android:elevation="0dp"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"
                 android:minHeight="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                app:popupTheme="@style/Theme.MyTheme"
                 app:layout_collapseMode="pin"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>

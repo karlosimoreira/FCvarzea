@@ -60,7 +60,8 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
 
     @Override
     public jogadorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
+       // View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.convocar_jogadores, parent, false);
         return new jogadorViewHolder(view);
     }
 

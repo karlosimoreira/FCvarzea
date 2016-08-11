@@ -108,7 +108,7 @@
             android:name=".activitys.Home.ArenasActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.JogadoresActivity"
+            android:name=".activitys.Home.DetailsJogadorTestActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
             android:name=".activitys.Home.JogadoresSearchActivity"
@@ -127,7 +127,9 @@
         <activity
             android:name=".activitys.Home.DetailsJogadorActivity"
             android:label="@string/title_activity_details_jogador"
-            android:theme="@style/Theme.MyTheme"></activity>
+            android:theme="@style/Theme.MyTheme" />
+        <activity android:name=".activitys.Home.Jogador.JogadoresListActivity" />
+        <activity android:name=".activitys.Home.Jogador.DetailsActivity"></activity>
     </application>
 
 </manifest>

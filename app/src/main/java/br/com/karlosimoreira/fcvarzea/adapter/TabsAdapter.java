@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.domain.util;
+package br.com.karlosimoreira.fcvarzea.adapter;
 
 import android.content.Context;
 import android.os.Bundle;

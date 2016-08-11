@@ -1,25 +1,17 @@
 package br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys;
 
 import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.util.SlidingTabLayout;
-import br.com.karlosimoreira.fcvarzea.domain.util.TabsAdapter;
+import br.com.karlosimoreira.fcvarzea.adapter.TabsAdapter;
 import br.com.karlosimoreira.fcvarzea.fragments.profilerFragments.LinkAccountsFragment;
-import br.com.karlosimoreira.fcvarzea.fragments.profilerFragments.RemoveAccountsFragment;
-import br.com.karlosimoreira.fcvarzea.fragments.profilerFragments.UpdatePasswordFragment;
 
 public class ManageAccountsActivity extends AppCompatActivity implements  LinkAccountsFragment.OnFragmentInteractionListener{
 
