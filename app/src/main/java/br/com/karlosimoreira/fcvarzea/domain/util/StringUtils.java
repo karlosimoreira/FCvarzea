@@ -14,4 +14,9 @@ public class StringUtils {
     public static boolean isNullOrEmpty(String s) {
         return (s == null || s.equals(""));
     }
+
+    public static int subString(String mString){
+        int result = Integer.parseInt(mString.substring(6));
+        return result;
+    }
 }

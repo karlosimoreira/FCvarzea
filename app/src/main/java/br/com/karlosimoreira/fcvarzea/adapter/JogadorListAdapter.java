@@ -33,7 +33,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Carlos on 03/08/2016.
  */
-public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorViewHolder> {
+public class JogadorListAdapter extends RecyclerView.Adapter<JogadorListAdapter.jogadorViewHolder> {
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -57,7 +57,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
     private ArrayList<User> mJogadores = new ArrayList<>();
     private Context mContext;
 
-    public JogadorAdapter(ArrayList<User> mJogadores, Context mContext) {
+    public JogadorListAdapter(ArrayList<User> mJogadores, Context mContext) {
         this.mJogadores = mJogadores;
         this.mContext = mContext;
         ip = new ImagemProcess();
@@ -65,7 +65,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
 
     @Override
     public jogadorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
         //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.convocar_jogadores, parent, false);
         return new jogadorViewHolder(view);
     }
@@ -173,7 +173,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
+           itemView.setOnClickListener(this);
         }
 
         @Override

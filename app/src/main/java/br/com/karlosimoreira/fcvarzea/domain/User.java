@@ -308,6 +308,7 @@ public class User implements Parcelable{
         setEmail(parcel.readString());
         setPhone(parcel.readString());
         setPhoto(parcel.readString());
+        setBirthDate(parcel.readString());
         setPosition(parcel.readString());
         setCity(parcel.readString());
         setState(parcel.readString());

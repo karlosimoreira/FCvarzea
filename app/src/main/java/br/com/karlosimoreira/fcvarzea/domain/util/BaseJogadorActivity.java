@@ -68,7 +68,7 @@ public class BaseJogadorActivity extends AppCompatActivity{
                     userList.add(ds.getValue(User.class));
                 }
                 for (int i =0; i<userList.size(); i++){
-                    Log.i("Tag", "Name: "+ userList.get(i).getName() + "\n Position: " + userList.get(i).getPosition()+ "\n Photo: " + userList.get(i).getPhoto()+ "\n Classificação: " + userList.get(i).getClassificacao()) ;
+                   // Log.i("Tag", "Name: "+ userList.get(i).getName() + "\n Aniver: " + userList.get(i).getBirthDate()+ "\n Photo: " + userList.get(i).getCity()+ "\n Classificação: " + userList.get(i).getPeBom()+ "\n "+userList.size()) ;
                 }
             }
             @Override
@@ -76,4 +76,5 @@ public class BaseJogadorActivity extends AppCompatActivity{
         });
         return userList;
     }
+
 }
