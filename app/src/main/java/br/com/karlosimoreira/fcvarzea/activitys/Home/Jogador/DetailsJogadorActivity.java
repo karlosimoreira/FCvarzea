@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.activitys.Home;
+package br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -18,8 +18,7 @@ import com.squareup.picasso.Picasso;
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 
-public class DetailsJogadorTestActivity extends AppCompatActivity {
-    public static final String EXTRA_NAME = "user";
+public class DetailsJogadorActivity extends AppCompatActivity {
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView ivPhoto;
     private Toolbar toolbar;
@@ -33,7 +32,7 @@ public class DetailsJogadorTestActivity extends AppCompatActivity {
             getWindow().setSharedElementExitTransition( transition );
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_jogador_test);
+        setContentView(R.layout.activity_details_jogador);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -75,7 +74,7 @@ public class DetailsJogadorTestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        ivPhoto = (ImageView)findViewById(R.id.iv_car);
+        ivPhoto = (ImageView)findViewById(R.id.ivUser);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);

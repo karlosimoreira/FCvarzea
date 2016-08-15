@@ -10,11 +10,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.adapter.JogadorListAdapter;
+import br.com.karlosimoreira.fcvarzea.adapter.JogadorAdapter;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseJogadorActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 
-public class JogadoresListActivity extends BaseJogadorActivity {
+public class JogadoresSearchActivity extends BaseJogadorActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,6 @@ public class JogadoresListActivity extends BaseJogadorActivity {
         for (int i =0; i<auxUserList.size(); i++) {
             Log.i("Tag", "Name: " + auxUserList.get(i).getName() + "\n BirthDate: " + auxUserList.get(i).getBirthDate() + "\n PeBom: " + auxUserList.get(i).getPeBom());
         }
-
         outState.putParcelableArrayList("auxUserList", auxUserList);
 
     }
@@ -61,7 +60,10 @@ public class JogadoresListActivity extends BaseJogadorActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_save:
-                        Toast.makeText(JogadoresListActivity.this, "Salvar Lista de convocados", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JogadoresSearchActivity.this, "Salvar Lista de convocados", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_view:
+                        Toast.makeText(JogadoresSearchActivity.this, "Trocar view", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
@@ -72,12 +74,10 @@ public class JogadoresListActivity extends BaseJogadorActivity {
         if (rvUsers != null) {
             rvUsers.setHasFixedSize( true );
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
-            JogadorListAdapter adapter = new JogadorListAdapter(auxUserList,this);
+            JogadorAdapter adapter = new JogadorAdapter(auxUserList,this);
             rvUsers.setAdapter(adapter);
-
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_save_search_actions, menu);

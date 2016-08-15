@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.activitys.Home;
+package br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -30,7 +30,7 @@ import br.com.karlosimoreira.fcvarzea.domain.util.BaseJogadorActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
 
-public class JogadoresSearchActivity extends BaseJogadorActivity implements RecyclerViewOnClickListenerHack {
+public class JogadoresSearchActivity_old extends BaseJogadorActivity implements RecyclerViewOnClickListenerHack {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class JogadoresSearchActivity extends BaseJogadorActivity implements Recy
             public boolean onMenuItemClick(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.action_save:
-                        Toast.makeText(JogadoresSearchActivity.this,"Salvar Lista de convocados", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JogadoresSearchActivity_old.this,"Salvar Lista de convocados", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;

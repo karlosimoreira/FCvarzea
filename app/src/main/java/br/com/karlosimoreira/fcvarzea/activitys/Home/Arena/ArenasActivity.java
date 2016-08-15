@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.activitys.Home;
+package br.com.karlosimoreira.fcvarzea.activitys.Home.Arena;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

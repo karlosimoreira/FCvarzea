@@ -2,12 +2,12 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,6 +19,7 @@ public class DetailsActivity extends AppCompatActivity {
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView ivPhoto;
     private Toolbar toolbar;
+    private TextView tvIdade;
     private User user;
     private int idade;
     @Override
@@ -30,17 +31,17 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Salvando o estado da activity
-       // if(savedInstanceState != null){
-          //  user = savedInstanceState.getParcelable("user");
-       // }
-       // else {
+        if(savedInstanceState != null){
+            user = savedInstanceState.getParcelable("user");
+        }
+        else {
             user = getIntent().getExtras().getParcelable("user");
         Log.i("onCreate","user.getBirthDate() "+ user.getBirthDate()+"\n user.getCity() "+user.getCity()+ " \n user.getPeBom() "+ user.getPeBom());
 
-      //  }
+        }
         //Botão de ação Favorito
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-       /* fab.setOnClickListener(new View.OnClickListener() {
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Tem Nada aki!!!", Snackbar.LENGTH_LONG)
@@ -65,12 +66,15 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         ivPhoto = (ImageView)findViewById(R.id.iv_car);
+        tvIdade = (TextView)findViewById(R.id.tvIdade);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);
-        Log.i("Carlos","user.getBirthDate() "+ user.getBirthDate()+"\n user.getPhoto() "+user.getCity()+ " \n user.getName() "+ user.getPeBom());
-        //idade = StringUtils.subString(user.getBirthDate());
-        //Log.i("Carlos","subString"+ idade);
+       // Log.i("Carlos","user.getBirthDate() "+ user.getBirthDate()+"\n user.getPhoto() "+user.getCity()+ " \n user.getName() "+ user.getPeBom());
+
+
+       // String ms = "Idade: "+ String.valueOf(Uteis.calcularIdade(user.getBirthDate()));
+       // tvIdade.setText(ms);
     }
 
 

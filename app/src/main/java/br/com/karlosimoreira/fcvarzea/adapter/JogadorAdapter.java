@@ -21,8 +21,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.DetailsJogadorTestActivity;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresListActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorTestActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
 import br.com.karlosimoreira.fcvarzea.domain.util.ImagemProcess;
@@ -50,7 +51,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
     public final int CENTRO_AVANTE = 11;
     public final int PONTA_DIREITA = 12;
     public static RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
-    private JogadoresListActivity mJogadoresListActivity;
+    private JogadoresSearchActivity mJogadoresSearchActivity;
 
     private ImagemProcess ip;
 
@@ -65,7 +66,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
 
     @Override
     public jogadorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
         //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.convocar_jogadores, parent, false);
         return new jogadorViewHolder(view);
     }
@@ -138,12 +139,12 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
         }else {
             holder.mRbClassificacao.setRating((Float.parseFloat(user.getClassificacao())));
         }
-        mJogadoresListActivity = new JogadoresListActivity();
+        mJogadoresSearchActivity = new JogadoresSearchActivity();
         holder.setRecyclerViewOnClickListenerHack(new RecyclerViewOnClickListenerHack() {
             @Override
             public void onClickListener(View view, int position) {
                 Toast.makeText(mContext,mJogadores.get(position).getName(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, DetailsJogadorTestActivity.class);
+                Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
                 intent.putExtra(DetailsJogadorTestActivity.EXTRA_NAME, mJogadores.get(position));
                 mContext.startActivity(intent);
             }
@@ -173,7 +174,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
+           itemView.setOnClickListener(this);
         }
 
         @Override

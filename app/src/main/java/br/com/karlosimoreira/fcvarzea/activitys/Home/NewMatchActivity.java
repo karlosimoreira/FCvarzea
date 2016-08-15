@@ -30,7 +30,8 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresListActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Arena.ArenasActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.Calendario;
@@ -401,7 +402,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         params.putString("clausuraPrimaria", clausura);
         params.putString("valuePrimario", valor);
         params.putString("tipo", tipo);
-        Intent intent = new Intent(this, JogadoresListActivity.class);
+        Intent intent = new Intent(this, JogadoresSearchActivity.class);
         intent.putExtras(params);
         startActivityForResult(intent, JOGADORES_ACTIVITY );
     }

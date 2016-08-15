@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".activitys.Home.DetailsJogadorActivity">
+    tools:context=".activitys.Home.Jogador.DetailsJogadorActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

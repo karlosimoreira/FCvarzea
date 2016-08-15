@@ -105,13 +105,13 @@
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.ArenasActivity"
+            android:name=".activitys.Home.Arena.ArenasActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.DetailsJogadorTestActivity"
+            android:name=".activitys.Home.Jogador.DetailsJogadorTestActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.JogadoresSearchActivity"
+            android:name=".activitys.Home.Jogador.JogadoresSearchActivity_old"
             android:theme="@style/Theme.MyTheme" />
         <activity
             android:name=".activitys.Home.SearchableActivity"
@@ -125,10 +125,10 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activitys.Home.DetailsJogadorActivity"
+            android:name=".activitys.Home.Jogador.DetailsJogadorActivity"
             android:label="@string/title_activity_details_jogador"
             android:theme="@style/Theme.MyTheme" />
-        <activity android:name=".activitys.Home.Jogador.JogadoresListActivity" />
+        <activity android:name=".activitys.Home.Jogador.JogadoresSearchActivity" />
         <activity android:name=".activitys.Home.Jogador.DetailsActivity"></activity>
     </application>
 

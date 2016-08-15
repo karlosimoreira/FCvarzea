@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FC Varzéa 8.0</string>
+    <string name="app_name">FC Varzéa 8.2</string>
 
     <!-- Strings related to login -->
     <string name="prompt_name">Nome</string>
@@ -21,6 +21,7 @@
     <string name="action_sign_in_twitter">Entrar com Twitter</string>
     <string name="action_sign_up">Criar Conta</string>
     <string name="action_save">Salvar</string>
+    <string name="action_view">Visão</string>
     <string name="action_sign_up_call">Você é novo? Cadastre-se. ;)</string>
     <string name="action_reset_call">Não sei minha senha! :(</string>
     <string name="action_sign_in_short">Logar</string>
