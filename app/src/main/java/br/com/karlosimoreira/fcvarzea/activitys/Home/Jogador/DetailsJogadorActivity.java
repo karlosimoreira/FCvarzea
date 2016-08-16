@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextPaint;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.MenuItem;
@@ -15,10 +16,13 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Field;
+
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 
 public class DetailsJogadorActivity extends AppCompatActivity {
+    public static final String EXTRA_NAME = "user";
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView ivPhoto;
     private Toolbar toolbar;
@@ -69,12 +73,14 @@ public class DetailsJogadorActivity extends AppCompatActivity {
     }
     private void init(){
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        //changeCollapsedTitleTextColor(mCollapsingToolbarLayout);
         mCollapsingToolbarLayout.setTitle(user.getName() );
-        toolbar.setTitle( user.getName()) ;
+
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        ivPhoto = (ImageView)findViewById(R.id.ivUser);
+        ivPhoto = (ImageView)findViewById(R.id.ivPhoto);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);
@@ -86,5 +92,19 @@ public class DetailsJogadorActivity extends AppCompatActivity {
             finish();
         }
         return true;
+    }
+
+    private void changeCollapsedTitleTextColor(CollapsingToolbarLayout collapsingToolbarLayout) {
+        try {
+            final Field field = collapsingToolbarLayout.getClass().getDeclaredField("mCollapsingTextHelper");
+            field.setAccessible(true);
+
+            final Object object = field.get(collapsingToolbarLayout);
+            final Field tpf = object.getClass().getDeclaredField("mTextPaint");
+            tpf.setAccessible(true);
+
+            ((TextPaint) tpf.get(object)).setColor(getResources().getColor(R.color.colorPrimary));
+        } catch (Exception ignored) {
+        }
     }
 }

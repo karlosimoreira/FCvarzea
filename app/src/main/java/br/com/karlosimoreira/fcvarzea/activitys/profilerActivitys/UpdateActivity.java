@@ -36,8 +36,8 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.Calendar;
 
-import br.com.karlosimoreira.fcvarzea.activitys.MainActivity;
 import br.com.karlosimoreira.fcvarzea.R;
+import br.com.karlosimoreira.fcvarzea.activitys.MainActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.DownloadImageTask;
@@ -161,15 +161,11 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
                     params = new String[]{pathPhoto,name.getText().toString()};
                     url_cloudinary =  Resultado.uploadCloudinary(params);
 
-                    Log.i("onActivityResult","pathPhoto: " + pathPhoto);
-                    Log.i("onActivityResult","url_cloudinary: " + url_cloudinary);
                     ok = true;
                     PhotoProfiler.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathPhoto, intent), 175, 175));
                     isImageSelect = true;
 
                 }catch (Exception e){
-                    Log.i("onActivityResult","Exception: " + e.getMessage());
-
                         Toast.makeText(this,
                                 e.getMessage(),
                                 Toast.LENGTH_LONG)
@@ -209,7 +205,7 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
         state = (AutoCompleteTextView)findViewById(R.id.state);
         PhotoProfiler = (CircleImageView)findViewById(R.id.imageShield);
         imagePosition = (ImageView) findViewById(R.id.imagePosition);
-        txtBirthDate = (TextView)findViewById(R.id.txtBirthDate);
+        tvBirthDate = (TextView)findViewById(R.id.txtBirthDate);
         spPe = (Spinner)findViewById(R.id.spPe);
         spPe.setAdapter( spinnerAdapter());
         cbAtivo = (CheckBox)findViewById(R.id.cbAtivo);
@@ -1186,7 +1182,7 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
        this.month = monthOfYear;
        this.day = dayOfMonth;
 
-        txtBirthDate.setText(setTextBirthDate());
+        tvBirthDate.setText(setTextBirthDate());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

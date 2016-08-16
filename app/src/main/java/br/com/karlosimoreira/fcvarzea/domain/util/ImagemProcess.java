@@ -24,8 +24,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
-
-import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity_old;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 
 
 /**
@@ -183,7 +182,7 @@ public class ImagemProcess extends AppCompatActivity {
     }
 
     public Bitmap convetBitmap(int Id) {
-        return bitmapCovert = ImagemProcess.decodeSampledBitmapFromResource(JogadoresSearchActivity_old.mContext.getResources(), Id, 30, 30);
+        return bitmapCovert = ImagemProcess.decodeSampledBitmapFromResource(JogadoresSearchActivity.mContext.getResources(), Id, 30, 30);
     }
 
     public static void downloadImage(Context context, ImageView imageView, String url){
@@ -215,7 +214,7 @@ public class ImagemProcess extends AppCompatActivity {
             }
         };
 
-        Picasso.with(JogadoresSearchActivity_old.mContext).load(url).into(loadtarget);
+        Picasso.with(JogadoresSearchActivity.mContext).load(url).into(loadtarget);
         return b;
     }
 

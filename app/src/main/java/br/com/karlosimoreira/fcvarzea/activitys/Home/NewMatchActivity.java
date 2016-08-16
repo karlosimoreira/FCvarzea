@@ -3,14 +3,21 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -35,15 +42,23 @@ import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActi
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.Calendario;
+import br.com.karlosimoreira.fcvarzea.domain.util.ImagemProcess;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 import br.com.karlosimoreira.fcvarzea.domain.util.StringUtils;
 
 public class NewMatchActivity extends BaseActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener,  DialogInterface.OnCancelListener, TimePickerDialog.OnTimeSetListener{
-
+    private static final int IMAGEM_INTERNA = 26;
     public  static final int JOGADORES_ACTIVITY = 1;
     private User dataUser;
     private ArrayList<String> listCity;
     private ArrayList<String > listState;
+    private  String userName;
+    private  String tempoPartida;
+    private  String duracaoPartida;
+    private  String numJogadores;
+    private  String ordemSorteio;
+    private  String nomeArena;
+    private ArrayList<String > convocados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +70,14 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         listCity =new ArrayList<>();
         listState =new ArrayList<>();
 
-
+        Intent intent = getIntent();
+        if (intent != null){
+            Bundle UserParams = intent.getExtras();
+            if(UserParams != null){
+                userName = UserParams.getString("userName");
+                Log.i("onCreate","userName: "+userName);
+            }
+        }
         databaseReference = LibraryClass.getFirebase().child(User.NODE_DEFAULT);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -128,17 +150,120 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         Calendario.hour = hourOfDay;
         Calendario.minute = minute;
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        ImagemProcess Resultado = new ImagemProcess();
+        if(requestCode == IMAGEM_INTERNA){
+            if(resultCode == RESULT_OK){
+                pathPhoto = getImageInternal(intent);
+                try {
+                    params = new String[]{pathPhoto,name.getText().toString()};
+                    url_cloudinary =  Resultado.uploadCloudinary(params);
+
+                    ok = true;
+                    imageShield.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathPhoto, intent), 175, 175));
+                    isImageSelect = true;
+
+                }catch (Exception e){
+                    Toast.makeText(this,
+                            e.getMessage(),
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+        }
+    }
 
     private void init(){
         toolbar.setTitle( getResources().getString(R.string.title_activity_new_match) );
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_save:
+                        Toast.makeText(NewMatchActivity.this, "Salvar partida", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
 
+        tvTitulo = (TextView)findViewById(R.id.tvTitulo);
+        tvDescricao = (TextView)findViewById(R.id.tvDesc);
         spDuracao = (Spinner)findViewById(R.id.spDuracao);
         spNunJogadores = (Spinner)findViewById(R.id.spNunJogadores);
+        tvPresidente = (TextView)findViewById(R.id.tvPresidente);
+        rgTempo = (RadioGroup) findViewById(R.id.rgTempo);
+        rgCriterio = (RadioGroup) findViewById(R.id.rgCriterio);
+        imageShield = (ImageView)findViewById(R.id.imageShield);
 
+
+
+        rgTempo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId) {
+                    case R.id.rbTempo1:
+                        tempoPartida = "0"; //Partida de 1 tempo
+                        break;
+                    case R.id.rbTempo2:
+                        tempoPartida = "1"; //Partida de 2 tempo
+                        break;
+                }
+            }
+        });
+
+
+        if (tvPresidente != null) {
+            tvPresidente.setText(userName);
+        }
         spDuracao.setAdapter(spinnerDuracaoAdapter());
         spNunJogadores.setAdapter(spinnerNunJogadoresAdapter());
+
+        spDuracao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                duracaoPartida = spDuracao.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spNunJogadores.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                numJogadores = spNunJogadores.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        rgCriterio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId) {
+                    case R.id.rbCriterio1:
+                        ordemSorteio = "0"; //Criterio de sorteio sem sorteio
+                        break;
+                    case R.id.rbCriterio2:
+                        ordemSorteio = "1"; //Criterio de sorteio por chegada
+                        break;
+                    case R.id.rbCriterio3:
+                        ordemSorteio = "2"; //Criterio de sorteio Aleatorio
+                        break;
+                }
+            }
+        });
+
+
 
         btnArena = (Button)findViewById(R.id.btnArena);
         assert btnArena != null;
@@ -148,6 +273,40 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
             btnConvocarJogadores.setOnClickListener(this);
         }
         valueTipo ="0";
+
+
+    }
+    private Bitmap setupImage(String Url, Intent intent) {
+
+        Bitmap bitmap = null;
+        Log.i("setupImage","Url: " + Url);
+        Uri imageUri = intent.getData();
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),imageUri);
+        }catch (Exception e){
+            Log.i("setupImage","Exception: " + e.getMessage());
+        }
+        return bitmap;
+    }
+    private String getImageInternal(Intent intent){
+
+        Uri imagemSelecionada = intent.getData();
+        String[] colunas = {MediaStore.Images.Media.DATA};
+
+        Cursor cursor = getContentResolver().query(imagemSelecionada, colunas, null, null, null);
+        cursor.moveToFirst();
+
+        int indexColuna = cursor.getColumnIndex(colunas[0]);
+        String pathImg = cursor.getString(indexColuna);
+        cursor.close();
+
+        return (pathImg);
+    }
+
+    public void LoadImage(View view){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, IMAGEM_INTERNA);
     }
 
     public void dialogDisplayDate(){
@@ -413,6 +572,11 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
         return data;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_save_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

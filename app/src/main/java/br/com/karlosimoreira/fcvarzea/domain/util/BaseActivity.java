@@ -7,7 +7,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -80,14 +79,17 @@ public class BaseActivity extends AppCompatActivity {
     public ImageView imageViewSa;
     public ImageView imageViewCa;
     public ImageView imageViewPd;
-    public TextView txtBirthDate;
+    public ImageView imageShield;
+
+    public TextView tvBirthDate;
+    public TextView tvPresidente;
+    public TextView tvTitulo;
+    public TextView tvDescricao;
 
 
     public Toolbar toolbar;
     public Button btnArena;
     public Button btnConvocarJogadores;
-    public RadioButton rbCidade;
-    public RadioButton rbEstado;
     public CheckBox cbData;
     public CheckBox cbDia;
     public TextView tvData;
@@ -110,10 +112,12 @@ public class BaseActivity extends AppCompatActivity {
     public CheckBox cbIdade;
     public int donoArena;
     public String clausuraPrimaria;
-    public String clausuraSecundaria;
     public String valuePrimario;
     public String valueTipo;
+
+    public RadioGroup rgCriterio;
     public RadioGroup radioGroup;
+    public RadioGroup rgTempo;
     public DatabaseReference databaseReference;
 
     public ArrayAdapter spinnerPositionAdapter(){

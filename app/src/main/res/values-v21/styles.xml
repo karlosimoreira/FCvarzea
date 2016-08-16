@@ -9,7 +9,6 @@
         <item name="colorControlNormal">@android:color/white</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
-
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
@@ -17,10 +16,14 @@
     <style name="Theme.MyThemeBottom" parent="Theme.MyTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:textColor">@color/mdtp_white</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="MyTheme.LoginActionbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="MyTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -32,11 +35,15 @@
         <!-- <item name="android:elevation">0dp</item> -->
         <!-- Support library compatibility -->
         <item name="elevation">0dp</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="MyTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!-- Pattern application theme. -->
@@ -45,6 +52,8 @@
         <item name="colorPrimary">#444</item>
         <item name="colorPrimaryDark">#000</item>
         <item name="colorAccent">#fec00f</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

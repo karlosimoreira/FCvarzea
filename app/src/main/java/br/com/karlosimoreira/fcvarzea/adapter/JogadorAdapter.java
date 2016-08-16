@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorActivity;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorTestActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
@@ -66,8 +65,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
 
     @Override
     public jogadorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modelo_convocar_jogadores, parent, false);
-        //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.convocar_jogadores, parent, false);
+       View view = LayoutInflater.from(parent.getContext()).inflate(JogadoresSearchActivity.selectLayout, parent, false);
         return new jogadorViewHolder(view);
     }
 
@@ -144,19 +142,29 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
             @Override
             public void onClickListener(View view, int position) {
                 Toast.makeText(mContext,mJogadores.get(position).getName(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
-                intent.putExtra(DetailsJogadorTestActivity.EXTRA_NAME, mJogadores.get(position));
-                mContext.startActivity(intent);
-            }
+               Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
+                intent.putExtra(DetailsJogadorActivity.EXTRA_NAME, mJogadores.get(position));
+               mContext.startActivity(intent);
+                // TRANSITIONS
+                /*if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
+                    View ivPhoto = view.findViewById(R.id.ivPhoto);
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mContext,
+                            Pair.create( ivPhoto, "elementPhoto"));
+
+                    mContext.startActivity( intent, options.toBundle() );
+                }
+                else {
+                    mContext.startActivity(intent);
+                }*/
+
+            }
             @Override
             public void onLongPressClickListener(View view, int position) {
-
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return mJogadores.size();

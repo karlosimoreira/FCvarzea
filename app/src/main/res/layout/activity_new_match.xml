@@ -36,10 +36,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/viewName">
         <AutoCompleteTextView
-            android:id="@+id/name"
+            android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_name"
+            android:hint="@string/prompt_titulo"
             android:inputType="textPersonName"
             android:imeOptions="actionNext"
             android:maxLines="1"
@@ -58,7 +58,7 @@
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtDesc"
+                android:id="@+id/tvDesc"
                 android:hint="@string/prompt_desc"
                 android:inputType="textPersonName"
                 android:maxLines="1"
@@ -75,7 +75,7 @@
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtPresidente"
+                android:id="@+id/tvPresidente"
                 android:hint="@string/prompt_presidente"
                 android:inputType="textPersonName"
                 android:maxLines="1"

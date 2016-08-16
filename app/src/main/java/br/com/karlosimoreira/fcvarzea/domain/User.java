@@ -207,11 +207,9 @@ public class User implements Parcelable{
     public String getProprietario() {
         return proprietario;
     }
-
     public void setProprietario(String proprietario) {
         this.proprietario = proprietario;
     }
-
     private void setProprietarioInMap(Map<String, Object> map){
         if(getProprietario() != null){
             map.put("proprietario", getProprietario());

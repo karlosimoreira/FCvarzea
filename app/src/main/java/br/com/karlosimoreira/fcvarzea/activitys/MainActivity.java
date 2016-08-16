@@ -49,6 +49,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ValueEventListener, View.OnClickListener{
+    public  static final int MAIN_ACTIVITY = 2;
     private Toolbar toolbar;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView imageViewNew;
     private ImageView imageViewMy;
     private ImageView imageViewSearch;
+    private String userName;
 
 
 
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         profilerHeader = dataSnapshot.getValue(User.class);
         txtName.setText(profilerHeader.getName());
         txtInfo.setText(profilerHeader.getEmail());
+        userName = profilerHeader.getName();
 
         if(profilerHeader.getPhoto() == "" || profilerHeader.getPhoto() == null){
             photoHeader.setImageBitmap(ImagemProcess.getResizedBitmap(setupPlaceholder(R.drawable.ic_fc_varzea_medio), 175, 175));
@@ -263,7 +266,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imageViewNew:
-                startActivity(new Intent(this, NewMatchActivity.class));
+                Bundle UserParams = new Bundle();
+                UserParams.putString("userName", userName);
+                Intent intent = new Intent(this, NewMatchActivity.class);
+                intent.putExtras(UserParams);
+                startActivityForResult(intent, MAIN_ACTIVITY );
                 break;
             case R.id.imageViewMy:
                 startActivity(new Intent(this, MyMatchActivity.class));
