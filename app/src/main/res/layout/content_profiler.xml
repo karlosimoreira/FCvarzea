@@ -18,7 +18,7 @@
 
 
             <ImageView
-                android:layout_width="500dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/imageViewNew"
                 android:clickable="true"
@@ -27,7 +27,7 @@
                 android:layout_centerHorizontal="true" />
 
             <ImageView
-                android:layout_width="500dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/imageViewMy"
                 android:clickable="true"
@@ -36,7 +36,7 @@
                 android:layout_centerHorizontal="true" />
 
             <ImageView
-                android:layout_width="500dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:id="@+id/imageViewSearch"
                 android:src="@drawable/ic_search_match"
