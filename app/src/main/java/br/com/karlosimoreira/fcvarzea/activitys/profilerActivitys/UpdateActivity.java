@@ -99,7 +99,7 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
             if(isImageSelect){
                 return;
             }else {
-                PhotoProfiler.setImageBitmap(ImagemProcess.getResizedBitmap(convetBitmap(R.drawable.ic_account), 175, 175));
+                photoProfiler.setImageBitmap(ImagemProcess.getResizedBitmap(convetBitmap(R.drawable.ic_account), 175, 175));
             }
         }else {
             if (ok == false){
@@ -149,20 +149,20 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString("PhotoProfiler",pathPhotoSave);
+        outState.putString("photoProfiler",pathPhotoSave);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         ImagemProcess Resultado = new ImagemProcess();
         if(requestCode == IMAGEM_INTERNA){
             if(resultCode == RESULT_OK){
-                pathPhoto = getImageInternal(intent);
+                pathshield = getImageInternal(intent);
                 try {
-                    params = new String[]{pathPhoto,name.getText().toString()};
+                    params = new String[]{pathshield,name.getText().toString()};
                     url_cloudinary =  Resultado.uploadCloudinary(params);
 
                     ok = true;
-                    PhotoProfiler.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathPhoto, intent), 175, 175));
+                    photoProfiler.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathshield, intent), 175, 175));
                     isImageSelect = true;
 
                 }catch (Exception e){
@@ -203,7 +203,7 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
         phone = (AutoCompleteTextView) findViewById(R.id.phone);
         city = (AutoCompleteTextView)findViewById(R.id.city);
         state = (AutoCompleteTextView)findViewById(R.id.state);
-        PhotoProfiler = (CircleImageView)findViewById(R.id.imageShield);
+        photoProfiler = (CircleImageView)findViewById(R.id.photoProfiler);
         imagePosition = (ImageView) findViewById(R.id.imagePosition);
         tvBirthDate = (TextView)findViewById(R.id.txtBirthDate);
         spPe = (Spinner)findViewById(R.id.spPe);
@@ -237,7 +237,7 @@ public class UpdateActivity extends BaseActivity implements  DatabaseReference.C
     private void setupImage(String Url) {
 
         Log.i("setupImage","UrlUp: " + Url);
-        new DownloadImageTask((CircleImageView) findViewById(R.id.imageShield)).execute(Url);
+        new DownloadImageTask((CircleImageView) findViewById(R.id.photoProfiler)).execute(Url);
     }
 
     private Bitmap setupImage(String Url, Intent intent) {

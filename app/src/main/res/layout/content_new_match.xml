@@ -17,7 +17,7 @@
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageShield"
+            android:id="@+id/photoProfiler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:cropToPadding ="true"
@@ -28,7 +28,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageShield"
+            android:layout_below="@+id/photoProfiler"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:id="@+id/viewName">

@@ -46,9 +46,9 @@ public class BaseActivity extends AppCompatActivity {
     public AutoCompleteTextView city;
     public AutoCompleteTextView state;
     public String pathPhotoSave;
-    public CircleImageView PhotoProfiler;
+    public CircleImageView photoProfiler;
     public ImageView imagePosition;
-    public String pathPhoto;
+    public String pathshield;
     public String[] params;
     public String url_cloudinary;
     public User profilerHeader;

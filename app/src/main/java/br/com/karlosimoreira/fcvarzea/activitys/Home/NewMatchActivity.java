@@ -47,8 +47,9 @@ import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
 import br.com.karlosimoreira.fcvarzea.domain.util.StringUtils;
 
 public class NewMatchActivity extends BaseActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener,  DialogInterface.OnCancelListener, TimePickerDialog.OnTimeSetListener{
-    private static final int IMAGEM_INTERNA = 26;
+    private static final int IMAGEM_INTERNA_SHIELD = 26;
     public  static final int JOGADORES_ACTIVITY = 1;
+    public  final String SHIELD = "shield";
     private User dataUser;
     private ArrayList<String> listCity;
     private ArrayList<String > listState;
@@ -58,6 +59,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
     private  String numJogadores;
     private  String ordemSorteio;
     private  String nomeArena;
+    private  String shield;
     private ArrayList<String > convocados;
 
     @Override
@@ -152,17 +154,14 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
-        ImagemProcess Resultado = new ImagemProcess();
-        if(requestCode == IMAGEM_INTERNA){
+        ImagemProcess ip = new ImagemProcess();
+        if(requestCode == IMAGEM_INTERNA_SHIELD ){
             if(resultCode == RESULT_OK){
-                pathPhoto = getImageInternal(intent);
+                pathshield = getImageInternal(intent);
                 try {
-                    params = new String[]{pathPhoto,name.getText().toString()};
-                    url_cloudinary =  Resultado.uploadCloudinary(params);
-
-                    ok = true;
-                    imageShield.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathPhoto, intent), 175, 175));
-                    isImageSelect = true;
+                    shield = ip.saveBitmap(pathshield);
+                    imageShield.setImageBitmap(ImagemProcess.getResizedBitmap(setupImage(pathshield, intent), 175, 175));
+                    Log.i("onActivityResult","shield: "+shield);
 
                 }catch (Exception e){
                     Toast.makeText(this,
@@ -306,7 +305,7 @@ public class NewMatchActivity extends BaseActivity implements View.OnClickListen
     public void LoadImage(View view){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent, IMAGEM_INTERNA);
+        startActivityForResult(intent, IMAGEM_INTERNA_SHIELD);
     }
 
     public void dialogDisplayDate(){

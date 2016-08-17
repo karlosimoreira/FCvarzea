@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -19,12 +20,15 @@ import com.cloudinary.utils.ObjectUtils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
+
+import static android.util.Base64.encodeToString;
 
 
 /**
@@ -88,11 +92,13 @@ public class ImagemProcess extends AppCompatActivity {
             if (params.length > 0)
                 try {
                     String public_id = getRandomVariante() + params[1];
-                    cloudinary.uploader().upload(params[0], ObjectUtils.asMap("public_id",public_id ));
+                    Log.i("doInBackground", "pathFile: " + public_id);
+
+                    cloudinary.uploader().upload(params[0], ObjectUtils.asMap("",public_id ));
 
                     url = cloudinary.url().transformation(new Transformation().width(300).height(300).crop("fill")).generate(public_id);
 
-                    Log.i("doInBackground", "pathFile" + params[0]);
+
                     Log.i("doInBackground", "url" + url);
 
                 } catch (Exception e) {
@@ -216,6 +222,22 @@ public class ImagemProcess extends AppCompatActivity {
 
         Picasso.with(JogadoresSearchActivity.mContext).load(url).into(loadtarget);
         return b;
+    }
+
+    public String saveBitmap(String bmp){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 3;
+        Bitmap bitmap = BitmapFactory.decodeFile(bmp,options);
+        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+        bitmap.recycle();
+        byte[] byteArray = bYtE.toByteArray();
+        return encodeToString(byteArray, Base64.DEFAULT);
+    }
+    public Bitmap RecuperarBitmap(String encodedImage){
+        byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 
 }
