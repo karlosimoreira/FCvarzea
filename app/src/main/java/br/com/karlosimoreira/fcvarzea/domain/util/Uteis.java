@@ -1,7 +1,7 @@
 package br.com.karlosimoreira.fcvarzea.domain.util;
 
 
-import java.text.ParseException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,30 +13,38 @@ import java.util.Locale;
  */
 public class Uteis  {
 
+    public static int calculaIdade(String dataNasc, String pattern){
 
-    public static int calcularIdade(String date){
-        int idade = 0;
-        int anoCorrente;
-        Calendar cal = GregorianCalendar.getInstance();
-        anoCorrente = cal.get(Calendar.YEAR);
-        idade = anoCorrente - getYear(date);
-        return idade;
-    }
+        DateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH);
 
-    public static int getYear(String date){
-        int nDate;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date myDate = null;
+        Date dataNascInput = null;
+
         try {
-            myDate = dateFormat.parse(date);
 
-        } catch (ParseException e) {
-            e.printStackTrace();
+            dataNascInput = sdf.parse(dataNasc);
+
+
+        } catch (Exception e) {}
+
+        Calendar dateOfBirth = new GregorianCalendar();
+
+        dateOfBirth.setTime(dataNascInput);
+
+        // Cria um objeto calendar com a data atual
+
+        Calendar today = Calendar.getInstance();
+
+        // Obtém a idade baseado no ano
+
+        int age = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
+
+        dateOfBirth.add(Calendar.YEAR, age);
+
+        if (today.before(dateOfBirth)) {
+            age--;
         }
-        assert myDate != null;
-        nDate = myDate.getYear();
+        return age;
 
-        return nDate;
     }
 
 }

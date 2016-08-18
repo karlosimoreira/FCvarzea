@@ -328,6 +328,7 @@ public class User implements Parcelable{
         dest.writeString( getEmail() );
         dest.writeString( getPhone() );
         dest.writeString( getPhoto() );
+        dest.writeString( getBirthDate() );
         dest.writeString( getPosition() );
         dest.writeString( getCity() );
         dest.writeString( getState() );

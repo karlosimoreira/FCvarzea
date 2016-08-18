@@ -10,44 +10,57 @@
         android:text="Dados Pessuais:"
         android:textColor="@color/colorPrimarytext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="05dp"/>
-    <TextView
-        android:id="@+id/tvIdade"
-        android:textSize="18sp"
-        android:text="Idade: 23"
-        android:textColor="@color/colorPrimarytext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"/>
+        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvReside"
-        android:textSize="18sp"
-        android:text="Reside: Betim/MG"
-        android:textColor="@color/colorPrimarytext"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"/>
-    <TextView
-        android:id="@+id/tvEmail"
-        android:textSize="18sp"
-        android:text="Email: Não informado"
-        android:textColor="@color/colorPrimarytext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"/>
-    <TextView
-        android:id="@+id/tvTelefone"
-        android:textSize="18sp"
-        android:text="Telefone: Não informado"
-        android:textColor="@color/colorPrimarytext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_margin="@dimen/card_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="25dp">
+
+
+            <TextView
+                android:id="@+id/tvIdade"
+                android:textSize="18sp"
+                android:text="Idade: 23"
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/tvReside"
+                android:textSize="18sp"
+                android:text="Reside: Betim/MG"
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/tvEmail"
+                android:textSize="18sp"
+                android:text="Email: Não informado"
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/tvTelefone"
+                android:textSize="18sp"
+                android:text="Telefone: Não informado"
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/tvDadosTecnicos"
@@ -56,7 +69,30 @@
         android:text="Dados Tecinicos:"
         android:textColor="@color/colorPrimarytext"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_margin="@dimen/card_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="25dp">
+
+            <TextView
+                android:id="@+id/tvPosicao"
+                android:textSize="18sp"
+                android:text="Posição: "
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

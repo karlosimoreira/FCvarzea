@@ -13,6 +13,7 @@ import android.transition.TransitionInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,6 +21,8 @@ import java.lang.reflect.Field;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
+import br.com.karlosimoreira.fcvarzea.domain.util.Positions;
+import br.com.karlosimoreira.fcvarzea.domain.util.Uteis;
 
 public class DetailsJogadorActivity extends AppCompatActivity {
     public static final String EXTRA_NAME = "user";
@@ -27,6 +30,11 @@ public class DetailsJogadorActivity extends AppCompatActivity {
     private ImageView ivPhoto;
     private Toolbar toolbar;
     private User user;
+    private TextView tvIdade;
+    private TextView tvReside;
+    private TextView tvEmail;
+    private TextView tvTelefone;
+    private TextView tvPosicao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Transições
@@ -80,10 +88,25 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
+        tvPosicao= (TextView)findViewById(R.id.tvPosicao);
+        tvEmail= (TextView)findViewById(R.id.tvEmail);
+        tvTelefone= (TextView)findViewById(R.id.tvTelefone);
+        tvIdade= (TextView)findViewById(R.id.tvIdade);
+        tvReside = (TextView) findViewById(R.id.tvReside);
         ivPhoto = (ImageView)findViewById(R.id.ivPhoto);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);
+
+        String infoIdade = "Idade: "+String.valueOf(Uteis.calculaIdade(user.getBirthDate(), "dd/MM/yyyy"));
+        tvIdade.setText(infoIdade);
+        String infoReside = "Reside em: "+ user.getCity()+"/"+user.getState();
+        tvReside.setText(infoReside);
+        String infoEmail = "Email: "+user.getEmail();
+        tvEmail.setText(infoEmail);
+        String infoTelefone = "Telefone: "+ user.getPhone();
+        tvTelefone.setText(infoTelefone);
+        //tvPosicao.setText(getPosition(Integer.parseInt(user.getPosition())));
     }
 
     @Override
@@ -106,5 +129,56 @@ public class DetailsJogadorActivity extends AppCompatActivity {
             ((TextPaint) tpf.get(object)).setColor(getResources().getColor(R.color.colorPrimary));
         } catch (Exception ignored) {
         }
+    }
+    public String getPosition(Positions p){
+
+        String result;
+        switch (p) {
+
+            case GOLEIRO:
+
+                result = "GOLEIRO";
+                break;
+            case ZAGUEIRO:
+
+                result = "ZAGUEIRO";
+                break;
+            case LATERAL_ESQUERDO:
+
+                result = "LATERAL ESQUERDO";
+                break;
+            case LATERAL_DIREITO:
+                result = "LATERAL DIREITO";
+                break;
+            case MEIA_ESQUERDA:
+                result = "MEIA ESQUERDA";
+                break;
+            case VOLANTE:
+                result = "VOLANTE";
+                break;
+            case MEIA_DIREITA:
+                result = "MEIA DIREITA";
+                break;
+            case PONTA_ESQUERDA:
+                result = "PONTA ESQUERDA";
+                break;
+            case SEGUNDO_ATACANTE:
+                result = "SEGUNDO ATACANTE";
+                break;
+            case MEIA_OFENCIVO:
+                result = "MEIA OFENCIVO";
+                break;
+            case CENTRO_AVANTE:
+                result = "CENTRO AVANTE";
+                break;
+            case PONTA_DIREITA:
+                result = "PONTA DIREITA";
+                break;
+            default:
+                result = "GOLEIRO";
+
+        }
+
+        return result;
     }
 }
