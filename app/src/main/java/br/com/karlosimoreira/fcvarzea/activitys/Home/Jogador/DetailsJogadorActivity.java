@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextPaint;
 import android.transition.Transition;
@@ -21,20 +20,14 @@ import java.lang.reflect.Field;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.domain.User;
-import br.com.karlosimoreira.fcvarzea.domain.util.Positions;
+import br.com.karlosimoreira.fcvarzea.domain.util.BaseActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.Uteis;
 
-public class DetailsJogadorActivity extends AppCompatActivity {
+public class DetailsJogadorActivity extends BaseActivity {
     public static final String EXTRA_NAME = "user";
-    private CollapsingToolbarLayout mCollapsingToolbarLayout;
-    private ImageView ivPhoto;
     private Toolbar toolbar;
     private User user;
-    private TextView tvIdade;
-    private TextView tvReside;
-    private TextView tvEmail;
-    private TextView tvTelefone;
-    private TextView tvPosicao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Transições
@@ -80,20 +73,21 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         init();
     }
     private void init(){
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        //changeCollapsedTitleTextColor(mCollapsingToolbarLayout);
+        CollapsingToolbarLayout mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        changeCollapsedTitleTextColor(mCollapsingToolbarLayout);
         mCollapsingToolbarLayout.setTitle(user.getName() );
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        tvPosicao= (TextView)findViewById(R.id.tvPosicao);
-        tvEmail= (TextView)findViewById(R.id.tvEmail);
-        tvTelefone= (TextView)findViewById(R.id.tvTelefone);
-        tvIdade= (TextView)findViewById(R.id.tvIdade);
-        tvReside = (TextView) findViewById(R.id.tvReside);
-        ivPhoto = (ImageView)findViewById(R.id.ivPhoto);
+        TextView tvPeBom = (TextView) findViewById(R.id.tvPeBom);
+        TextView tvPosicao = (TextView) findViewById(R.id.tvPosicao);
+        TextView tvEmail = (TextView) findViewById(R.id.tvEmail);
+        TextView tvTelefone = (TextView) findViewById(R.id.tvTelefone);
+        TextView tvIdade = (TextView) findViewById(R.id.tvIdade);
+        TextView tvReside = (TextView) findViewById(R.id.tvReside);
+        ImageView ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
         Picasso.with(this)
                 .load(user.getPhoto())
                 .into(ivPhoto);
@@ -106,7 +100,10 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         tvEmail.setText(infoEmail);
         String infoTelefone = "Telefone: "+ user.getPhone();
         tvTelefone.setText(infoTelefone);
-        //tvPosicao.setText(getPosition(Integer.parseInt(user.getPosition())));
+        String infoPosicao = "Posição que joga: "+getPosition(Integer.parseInt(user.getPosition()));
+        tvPosicao.setText(infoPosicao);
+        String infoPeBom = "Melhor Pé: "+getPeBom(Integer.parseInt(user.getPeBom()));
+        tvPeBom.setText(infoPeBom);
     }
 
     @Override
@@ -130,21 +127,17 @@ public class DetailsJogadorActivity extends AppCompatActivity {
         } catch (Exception ignored) {
         }
     }
-    public String getPosition(Positions p){
-
+    public String getPosition(int p){
         String result;
         switch (p) {
 
             case GOLEIRO:
-
                 result = "GOLEIRO";
                 break;
             case ZAGUEIRO:
-
                 result = "ZAGUEIRO";
                 break;
             case LATERAL_ESQUERDO:
-
                 result = "LATERAL ESQUERDO";
                 break;
             case LATERAL_DIREITO:
@@ -175,10 +168,23 @@ public class DetailsJogadorActivity extends AppCompatActivity {
                 result = "PONTA DIREITA";
                 break;
             default:
-                result = "GOLEIRO";
-
+                result = "NÃO INFORMADO";
         }
+        return result;
+    }
+    public String getPeBom(int p){
+        String result;
+        switch (p) {
 
+            case 0:
+                result = "ESQUERDO";
+                break;
+            case 1:
+                result = "DIREITO";
+                break;
+            default:
+                result = "NÃO INFORMADO";
+        }
         return result;
     }
 }

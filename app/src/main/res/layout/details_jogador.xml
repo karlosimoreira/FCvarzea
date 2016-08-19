@@ -91,6 +91,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/tvPeBom"
+                android:textSize="18sp"
+                android:text="Pe Bom: "
+                android:textColor="@color/colorPrimarytext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

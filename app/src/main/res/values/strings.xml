@@ -105,6 +105,7 @@
     <string name="title_activity_my_match">Minhas partidas</string>
     <string name="title_activity_search_match">Buscar partidas</string>
     <string name="title_activity_summon_players">Selecione seus jogadores</string>
+    <string name="title_activity_summon_arenas">Selecione a arena</string>
 
 
     <string name="facebook_app_id">498102913732532</string>

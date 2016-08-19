@@ -16,4 +16,5 @@
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <include layout="@layout/content_update" />
+
 </android.support.design.widget.CoordinatorLayout>
