@@ -26,4 +26,8 @@
 
     <color name="Facebook">#3b5998</color>
     <color name="Google">#dd4b39</color>
+
+
+    <drawable name="itemLongPress">#111112</drawable>
+    <drawable name="itemSelected">#76f78c</drawable>
 </resources>

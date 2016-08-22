@@ -45,10 +45,12 @@ public class ArenaAdapter extends RecyclerView.Adapter<ArenaAdapter.ArenaViewHol
             @Override
             public void onClickListener(View view, int position) {
                 Toast.makeText(mContext,mArenas.get(position),Toast.LENGTH_SHORT).show();
+                view.setSelected(true);
             }
             @Override
             public void onLongPressClickListener(View view, int position) {
                 Toast.makeText(mContext,mArenas.get(position)+ " foi Selecionada",Toast.LENGTH_SHORT).show();
+                view.setSelected(false);
             }
         });
     }

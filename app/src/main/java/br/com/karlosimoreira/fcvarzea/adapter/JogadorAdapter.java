@@ -1,7 +1,6 @@
 package br.com.karlosimoreira.fcvarzea.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -21,7 +20,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
@@ -142,7 +140,8 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
             @Override
             public void onClickListener(View view, int position) {
                 Toast.makeText(mContext,mJogadores.get(position).getName(),Toast.LENGTH_SHORT).show();
-               Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
+                view.setSelected(true);
+              /* Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
                 intent.putExtra(DetailsJogadorActivity.EXTRA_NAME, mJogadores.get(position));
                mContext.startActivity(intent);
                 // TRANSITIONS
@@ -162,6 +161,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
             }
             @Override
             public void onLongPressClickListener(View view, int position) {
+
             }
         });
     }
