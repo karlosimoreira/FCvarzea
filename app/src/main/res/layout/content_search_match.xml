@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.karlosimoreira.fcvarzea.activitys.Home.SearchMatchActivity"
+    tools:context=".activitys.Home.Match.SearchMatchActivity"
     tools:showIn="@layout/activity_search_match">
 
     <TextView

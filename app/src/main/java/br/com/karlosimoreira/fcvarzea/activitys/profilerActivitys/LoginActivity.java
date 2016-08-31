@@ -1,6 +1,8 @@
 package br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
@@ -37,9 +39,10 @@ import com.google.firebase.crash.FirebaseCrash;
 
 import java.util.Arrays;
 
-import br.com.karlosimoreira.fcvarzea.activitys.MainActivity;
 import br.com.karlosimoreira.fcvarzea.R;
+import br.com.karlosimoreira.fcvarzea.activitys.MainActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
+import br.com.karlosimoreira.fcvarzea.domain.util.Uteis;
 
 /**
  * Created by Carlos on 28/05/2016.
@@ -59,41 +62,13 @@ public class LoginActivity extends CommonActivity implements GoogleApiClient.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // FACEBOOK
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                accessFacebookLoginData( loginResult.getAccessToken() );
-            }
-
-            @Override
-            public void onCancel() {}
-
-            @Override
-            public void onError(FacebookException error) {
-                FirebaseCrash.report( error );
-                showSnackbar( error.getMessage() );
-            }
-        });
-
-        // GOOGLE SIGN IN
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(REQUEST_ID_TOKEN)
-                .requestEmail()
-                .build();
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
-
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = getFirebaseAuthResultHandler();
-        initViews();
-        initUser();
-
+       Uteis.conectivtyManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Uteis.verificaConexao()){
+            verifyThisLogged();
+        }else {
+            showToast("Falha na conexão, " + "favor vericar a conexão com a internet!");
+            finish();
+        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -290,7 +265,6 @@ public class LoginActivity extends CommonActivity implements GoogleApiClient.OnC
             mAuth.addAuthStateListener( mAuthListener );
         }
     }
-
     private void verifyLogin(){
         FirebaseCrash.log("LoginActivity:verifyLogin()");
         user.saveProviderSP( LoginActivity.this, "" );
@@ -314,6 +288,43 @@ public class LoginActivity extends CommonActivity implements GoogleApiClient.OnC
                         FirebaseCrash.report( e );
                     }
                 });
+    }
+
+    private void verifyThisLogged(){
+        // FACEBOOK
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                accessFacebookLoginData( loginResult.getAccessToken() );
+            }
+
+            @Override
+            public void onCancel() {}
+
+            @Override
+            public void onError(FacebookException error) {
+                FirebaseCrash.report( error );
+                showSnackbar( error.getMessage() );
+            }
+        });
+
+        // GOOGLE SIGN IN
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(REQUEST_ID_TOKEN)
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = getFirebaseAuthResultHandler();
+        initViews();
+        initUser();
     }
 
 }

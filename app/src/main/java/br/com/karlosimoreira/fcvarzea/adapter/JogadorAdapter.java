@@ -1,6 +1,7 @@
 package br.com.karlosimoreira.fcvarzea.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -20,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import br.com.karlosimoreira.fcvarzea.R;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.DetailsJogadorActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Jogador.JogadoresSearchActivity;
 import br.com.karlosimoreira.fcvarzea.domain.User;
 import br.com.karlosimoreira.fcvarzea.domain.util.Animation;
@@ -53,6 +55,7 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
     private ImagemProcess ip;
 
     private ArrayList<User> mJogadores = new ArrayList<>();
+    private ArrayList<User> AuxJogadores = new ArrayList<>();
     private Context mContext;
 
     public JogadorAdapter(ArrayList<User> mJogadores, Context mContext) {
@@ -139,11 +142,16 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
         holder.setRecyclerViewOnClickListenerHack(new RecyclerViewOnClickListenerHack() {
             @Override
             public void onClickListener(View view, int position) {
+
+                //view.setSelected(true);
+                User u = mJogadores.get(position);
+                AuxJogadores.add(u);
+                Toast.makeText(mContext,u.getName() + " "+ u.getId(),Toast.LENGTH_SHORT).show();
+
                 Toast.makeText(mContext,mJogadores.get(position).getName(),Toast.LENGTH_SHORT).show();
-                view.setSelected(true);
-              /* Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
+                Intent intent = new Intent(mContext, DetailsJogadorActivity.class);
                 intent.putExtra(DetailsJogadorActivity.EXTRA_NAME, mJogadores.get(position));
-               mContext.startActivity(intent);
+                mContext.startActivity(intent);
                 // TRANSITIONS
                 /*if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ){
 
@@ -157,11 +165,13 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
                 else {
                     mContext.startActivity(intent);
                 }*/
-
             }
             @Override
             public void onLongPressClickListener(View view, int position) {
-
+                view.setSelected(true);
+                User u = mJogadores.get(position);
+                AuxJogadores.add(u);
+                Toast.makeText(mContext,u.getName() + "Long "+ u.getId(),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -170,6 +180,10 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
         return mJogadores.size();
     }
 
+
+
+
+    //ViewHolder
     public class jogadorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.ivPhoto) ImageView mIvPhoto;
         @Bind(R.id.ivPosition) ImageView mIvPosition;
@@ -195,8 +209,6 @@ public class JogadorAdapter extends RecyclerView.Adapter<JogadorAdapter.jogadorV
         public void setRecyclerViewOnClickListenerHack(RecyclerViewOnClickListenerHack r){
             mRecyclerViewOnClickListenerHack = r;
         }
+
     }
-
-
-
 }

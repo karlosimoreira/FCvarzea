@@ -27,9 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.MyMatchActivity;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.NewMatchActivity;
-import br.com.karlosimoreira.fcvarzea.activitys.Home.SearchMatchActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.MyMatchActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.NewMatchActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.SearchMatchActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.LinkAccountsActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.LoginActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys.ManageAccountsActivity;

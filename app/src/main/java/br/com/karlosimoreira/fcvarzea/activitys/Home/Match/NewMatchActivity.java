@@ -1,4 +1,4 @@
-package br.com.karlosimoreira.fcvarzea.activitys.Home;
+package br.com.karlosimoreira.fcvarzea.activitys.Home.Match;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

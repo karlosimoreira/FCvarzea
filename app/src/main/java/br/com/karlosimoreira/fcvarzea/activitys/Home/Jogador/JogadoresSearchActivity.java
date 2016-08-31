@@ -10,15 +10,19 @@ import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import br.com.karlosimoreira.fcvarzea.R;
 import br.com.karlosimoreira.fcvarzea.adapter.JogadorAdapter;
 import br.com.karlosimoreira.fcvarzea.domain.util.BaseJogadorActivity;
 import br.com.karlosimoreira.fcvarzea.domain.util.LibraryClass;
+import br.com.karlosimoreira.fcvarzea.domain.util.RecyclerViewTouchListener;
+import br.com.karlosimoreira.fcvarzea.inteface.RecyclerViewOnClickListenerHack;
 
-public class JogadoresSearchActivity extends BaseJogadorActivity {
+public class JogadoresSearchActivity extends BaseJogadorActivity implements RecyclerViewOnClickListenerHack{
 
+    public static RecyclerView rv;
     public static int selectLayout;
     private boolean layout = true;
     private MenuItem viewLayout;
@@ -100,9 +104,12 @@ public class JogadoresSearchActivity extends BaseJogadorActivity {
     }
     private void SetRecycleView(){
         rvUsers = (RecyclerView) findViewById(R.id.rvList);
+        rv = rvUsers;
+        RecyclerViewTouchListener rcl;
 
         if (rvUsers != null) {
             rvUsers.setHasFixedSize( true );
+            rvUsers.addOnItemTouchListener(new RecyclerViewTouchListener( this, rvUsers, this ));
             rvUsers.setLayoutManager( new LinearLayoutManager(this));
             JogadorAdapter adapter = new JogadorAdapter(auxUserList,this);
             rvUsers.setAdapter(adapter);
@@ -123,4 +130,18 @@ public class JogadoresSearchActivity extends BaseJogadorActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onClickListener(View view, int position) {
+        Toast.makeText(mContext,auxUserList.get(position).getName(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLongPressClickListener(View view, int position) {
+
+        Toast.makeText(mContext,auxUserList.get(position).getId(),Toast.LENGTH_SHORT).show();
+    }
+
+
+
 }

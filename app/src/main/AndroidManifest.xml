@@ -90,17 +90,17 @@
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyThemeBottom" />
         <activity
-            android:name=".activitys.Home.NewMatchActivity"
+            android:name=".activitys.Home.Match.NewMatchActivity"
             android:label="@string/title_activity_new_match"
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.MyMatchActivity"
+            android:name=".activitys.Home.Match.MyMatchActivity"
             android:label="@string/title_activity_my_match"
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity
-            android:name=".activitys.Home.SearchMatchActivity"
+            android:name=".activitys.Home.Match.SearchMatchActivity"
             android:label="@string/title_activity_search_match"
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyTheme" />
@@ -129,7 +129,8 @@
             android:label="@string/title_activity_details_jogador"
             android:theme="@style/Theme.MyTheme" />
         <activity android:name=".activitys.Home.Jogador.JogadoresSearchActivity" />
-        <activity android:name=".activitys.Home.Jogador.DetailsActivity"></activity>
+        <activity android:name=".activitys.Home.Jogador.DetailsActivity" />
+        <activity android:name=".activitys.Home.Arena.Cad.CadArenaActivity"></activity>
     </application>
 
 </manifest>

@@ -72,6 +72,14 @@
 
             android:layout_below="@+id/ivPhoto"/>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_check_white"
+            android:visibility="visible"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

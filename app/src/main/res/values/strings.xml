@@ -3,15 +3,20 @@
 
     <!-- Strings related to login -->
     <string name="prompt_name">Nome</string>
+    <string name="prompt_proprietario">Proprietario</string>
+
     <string name="prompt_titulo">Titulo</string>
     <string name="prompt_participacao">Participação</string>
     <string name="prompt_desc">Descrição</string>
     <string name="prompt_presidente">Presidente</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_site">Site</string>
+    <string name="prompt_end">Rua/Nº</string>
     <string name="prompt_phone">Telefone</string>
     <string name="prompt_position">Posição que joga</string>
     <string name="prompt_city">Cidade</string>
     <string name="prompt_state">Estado</string>
+    <string name="prompt_bairro">Bairro</string>
     <string name="prompt_birthDate">Data nascimento</string>
     <string name="prompt_password">Senha</string>
     <string name="prompt_new_password">Nova senha</string>
@@ -147,5 +152,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_details_jogador">DetailsJogadorActivity</string>
     <string name="Name_teste">Carlos Alberto Reis Moreira</string>
+    <string name="_01_01_2016">01/01/2016</string>
 
 </resources>

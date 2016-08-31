@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:id="@+id/scrollView"
-    tools:context="br.com.karlosimoreira.fcvarzea.activitys.Home.NewMatchActivity"
+    tools:context=".activitys.Home.Match.NewMatchActivity"
     tools:showIn="@layout/activity_new_match">
 
 

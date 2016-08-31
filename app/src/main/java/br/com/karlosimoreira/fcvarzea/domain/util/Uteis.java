@@ -1,6 +1,9 @@
 package br.com.karlosimoreira.fcvarzea.domain.util;
 
 
+import android.net.ConnectivityManager;
+import android.support.v7.app.AppCompatActivity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,7 +14,9 @@ import java.util.Locale;
 /**
  * Created by Carlos on 12/08/2016.
  */
-public class Uteis  {
+public class Uteis extends AppCompatActivity {
+
+    public static ConnectivityManager conectivtyManager;
 
     public static int calculaIdade(String dataNasc, String pattern){
 
@@ -45,6 +50,22 @@ public class Uteis  {
         }
         return age;
 
+    }
+
+
+
+    /* Função para verificar existência de conexão com a internet
+	 */
+    public static boolean verificaConexao() {
+        boolean conectado;
+        if (conectivtyManager.getActiveNetworkInfo() != null
+                && conectivtyManager.getActiveNetworkInfo().isAvailable()
+                && conectivtyManager.getActiveNetworkInfo().isConnected()) {
+            conectado = true;
+        } else {
+            conectado = false;
+        }
+        return conectado;
     }
 
 }
