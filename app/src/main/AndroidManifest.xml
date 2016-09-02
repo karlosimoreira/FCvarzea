@@ -130,7 +130,8 @@
             android:theme="@style/Theme.MyTheme" />
         <activity android:name=".activitys.Home.Jogador.JogadoresSearchActivity" />
         <activity android:name=".activitys.Home.Jogador.DetailsActivity" />
-        <activity android:name=".activitys.Home.Arena.Cad.CadArenaActivity"></activity>
+        <activity android:name=".activitys.Home.Arena.Cad.CadArenaActivity" />
+        <activity android:name=".activitys.Home.Arena.ManangeArenaActivity"></activity>
     </application>
 
 </manifest>
