@@ -10,6 +10,14 @@
             android:id="@+id/nav_update_conta"
             android:icon="@drawable/ic_life_cycle"
             android:title="@string/update_login" />
+        <item
+            android:id="@+id/nav_arena"
+            android:icon="@mipmap/ic_perm_data_setting"
+            android:title="@string/cad_arena" />
+        <item
+            android:id="@+id/nav_manage_arena"
+            android:icon="@mipmap/ic_perm_data_setting"
+            android:title="@string/manage_arena" />
 
     </group>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     android:orientation="vertical"
-    tools:context="br.com.karlosimoreira.fcvarzea.activitys.Home.Arena.ManangeArenaActivity">
+    tools:context=".activitys.Home.Arena.ManageArenaActivity">
 
 <android.support.v7.widget.Toolbar
     android:id="@+id/toolbar"
@@ -17,17 +17,16 @@
     android:background="?attr/colorPrimary"
     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-<br.com.karlosimoreira.fcvarzea.domain.util.SlidingTabLayout
-    android:id="@+id/stl_tabs"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-</br.com.karlosimoreira.fcvarzea.domain.util.SlidingTabLayout>
-
-<android.support.v4.view.ViewPager
-    android:id="@+id/vp_tabs"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:id="@+id/menu_agendamento"
+        android:src="@drawable/ic_menu2"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:id="@+id/menu_manage"
+        android:src="@drawable/ic_menu1"/>
 
 </LinearLayout>
 

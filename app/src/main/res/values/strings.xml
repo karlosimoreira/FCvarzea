@@ -79,6 +79,8 @@
     <string name="update_profile">Perfil</string>
     <string name="reset">Recuperar acesso</string>
     <string name="update_login">Conta</string>
+    <string name="manage_arena">Gerenciar Arena</string>
+    <string name="cad_arena">Arena</string>
     <string name="update_login_button">ATUALIZAR SENHA</string>
     <string name="reset_bt_label">Iniciar recuperação acesso</string>
     <string name="update_password">Atualizar senha</string>
@@ -105,12 +107,14 @@
     <string name="title_activity_reset">Recuperar acesso</string>
     <string name="title_activity_link_accounts">Conectar contas</string>
     <string name="title_activity_manage_accounts">Conta</string>
+    <string name="title_activity_manage_arena">Arena</string>
     <string name="title_activity_new_match">Criar partida</string>
     <string name="title_activity_update_accounts">Atualizar Perfil</string>
     <string name="title_activity_my_match">Minhas partidas</string>
     <string name="title_activity_search_match">Buscar partidas</string>
     <string name="title_activity_summon_players">Selecione seus jogadores</string>
     <string name="title_activity_summon_arenas">Selecione a arena</string>
+    <string name="title_activity_new_arena">Cadastro de Arena</string>
 
 
     <string name="facebook_app_id">498102913732532</string>

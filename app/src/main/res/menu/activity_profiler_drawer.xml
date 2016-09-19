@@ -10,6 +10,10 @@
             android:id="@+id/nav_link_accounts"
             android:icon="@drawable/ic_link"
             android:title="@string/title_activity_link_accounts" />
+        <item
+            android:id="@+id/nav_manage_arena"
+            android:icon="@mipmap/ic_perm_data_setting"
+            android:title="@string/manage_arena" />
 
     </group>
 
