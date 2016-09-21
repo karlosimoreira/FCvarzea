@@ -134,7 +134,8 @@
             android:parentActivityName=".activitys.MainActivity"
             android:theme="@style/Theme.MyTheme" />
         <activity android:name=".activitys.Home.Arena.AgendamentoArenaActivity" />
-        <activity android:name=".activitys.Home.Arena.ArenaManageActivity"></activity>
+        <activity android:name=".activitys.Home.Arena.ArenaManageActivity" />
+        <activity android:name=".activitys.Chat.ChatActivity"></activity>
     </application>
 
 </manifest>
