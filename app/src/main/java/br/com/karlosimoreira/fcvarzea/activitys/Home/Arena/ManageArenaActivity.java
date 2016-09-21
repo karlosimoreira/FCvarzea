@@ -2,18 +2,14 @@ package br.com.karlosimoreira.fcvarzea.activitys.Home.Arena;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.ViewPager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import br.com.karlosimoreira.fcvarzea.R;
-import br.com.karlosimoreira.fcvarzea.adapter.TabsAdapter;
-import br.com.karlosimoreira.fcvarzea.domain.util.SlidingTabLayout;
 
-public class ManangeArenaActivity extends AppCompatActivity {
-    private SlidingTabLayout slidingTabLayout;
-    private ViewPager viewPager;
+public class ManageArenaActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Override
@@ -22,16 +18,9 @@ public class ManangeArenaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manange_arena);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorIcons));
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager)findViewById(R.id.vp_tabs);
-        viewPager.setAdapter(new TabsAdapter(getSupportFragmentManager(),this));
-
-        slidingTabLayout = (SlidingTabLayout)findViewById(R.id.stl_tabs);
-        slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        slidingTabLayout.setSelectedIndicatorColors(R.color.colorAccent);
-        slidingTabLayout.setViewPager(viewPager);
     }
 
     @Override
@@ -41,7 +30,7 @@ public class ManangeArenaActivity extends AppCompatActivity {
     }
 
     private void init(){
-        toolbar.setTitle( getResources().getString(R.string.title_activity_manage_accounts) );
+        toolbar.setTitle( getResources().getString(R.string.title_activity_manage_arena) );
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     @Override
@@ -53,8 +42,5 @@ public class ManangeArenaActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-   /* @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }*/
 }

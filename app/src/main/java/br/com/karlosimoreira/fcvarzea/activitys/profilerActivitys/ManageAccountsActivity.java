@@ -2,6 +2,7 @@ package br.com.karlosimoreira.fcvarzea.activitys.profilerActivitys;
 
 import android.net.Uri;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,14 +27,14 @@ public class ManageAccountsActivity extends AppCompatActivity implements  LinkAc
         setContentView(R.layout.activity_manage_accounts);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorIcons));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this,R.color.colorIcons));
         setSupportActionBar(toolbar);
 
         viewPager = (ViewPager)findViewById(R.id.vp_tabs);
         viewPager.setAdapter(new TabsAdapter(getSupportFragmentManager(),this));
 
         slidingTabLayout = (SlidingTabLayout)findViewById(R.id.stl_tabs);
-        slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        slidingTabLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
         slidingTabLayout.setSelectedIndicatorColors(R.color.colorAccent);
         slidingTabLayout.setViewPager(viewPager);
     }

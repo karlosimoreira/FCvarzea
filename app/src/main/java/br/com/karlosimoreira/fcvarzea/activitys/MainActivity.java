@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import br.com.karlosimoreira.fcvarzea.R;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Arena.Cad.CadArenaActivity;
+import br.com.karlosimoreira.fcvarzea.activitys.Home.Arena.ManageArenaActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.MyMatchActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.NewMatchActivity;
 import br.com.karlosimoreira.fcvarzea.activitys.Home.Match.SearchMatchActivity;
@@ -235,6 +237,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_chat) {
 
+        }
+        else if (id == R.id.nav_manage_arena) {
+            startActivity(new Intent(this, ManageArenaActivity.class));
+        }
+        else if (id == R.id.nav_arena) {
+            startActivity(new Intent(this, CadArenaActivity.class));
         }
         else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
