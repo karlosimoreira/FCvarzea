@@ -16,26 +16,6 @@
     android:layout_height="wrap_content">
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/imageViewMy"
-            android:clickable="true"
-            android:src="@drawable/ic_my_match"
-            android:layout_marginTop="289dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/imageViewNew"
-            android:clickable="true"
-            android:src="@drawable/ic_new_match"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="86dp" />
-
     </RelativeLayout>
 
     </ScrollView>

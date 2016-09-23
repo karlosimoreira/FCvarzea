@@ -55,6 +55,13 @@
            android:max="5"
            android:layout_above="@+id/ivPosition"
            android:layout_centerHorizontal="true" />
+
+       <CheckBox
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/cbSelectJogador"
+           android:layout_alignParentTop="true"
+           android:layout_alignParentEnd="true" />
    </RelativeLayout>
 
 

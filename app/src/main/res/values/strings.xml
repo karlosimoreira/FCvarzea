@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FC Varzéa 10.0</string>
+    <string name="app_name">FC Varzéa 12.0</string>
 
     <!-- Strings related to login -->
     <string name="prompt_name">Nome</string>
